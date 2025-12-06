@@ -11,3 +11,16 @@ You Will also need to create a .env file and create a variable like this:
 TOKEN = ""
 
 This variable will be used to run the bot
+
+
+The bot will handle these commands:
+
+/poll {message} n{option(n)} #Creates a poll with n custom options
+/random {x} {y}  #Generates a random number between x and y 
+/github {repository_link} #Get the informations of a repository
+/quizz #Get a random developper question to answer
+
+--ELECTRONICS--
+
+/Current {voltage} {resistance}
+/resistance_code n{color}   with n number of arguments , you input the color of the resistance in the correct order and the bot will help you knowing the resistance value
