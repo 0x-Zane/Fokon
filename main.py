@@ -97,9 +97,12 @@ async def  on_ready():
 @client.command()
 async def hello(ctx):
     await ctx.send("Hello, Geeks !")
-
+@client.command()
 async def quizz(ctx): # will add the argument to get a quizz from a certain niche
     await ctx.send(questions[ra.randint(0,len(questions)-1)])
+@client.command()
+async def nohello(ctx):
+    await ctx.send("https://nohello.net/en/")
 
 client.run(TOKEN)
 
