@@ -24,3 +24,7 @@ The bot will handle these commands:
 
 /Current {voltage} {resistance}
 /resistance_code n{color}   with n number of arguments , you input the color of the resistance in the correct order and the bot will help you knowing the resistance value
+
+
+--GAMING--
+/steam track
