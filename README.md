@@ -14,11 +14,12 @@ This variable will be used to run the bot
 
 
 The bot will handle these commands:
-
+--GENERAL TECH--
 /poll {message} n{option(n)} #Creates a poll with n custom options
 /random {x} {y}  #Generates a random number between x and y 
 /github {repository_link} #Get the informations of a repository
 /quizz #Get a random developper question to answer
+/nohello #Sends the nohello.net link
 
 --ELECTRONICS--
 
