@@ -105,6 +105,9 @@ async def quizz(ctx,category): # will add the argument to get a quizz from a cer
 
         case "blockchain":
             await ctx.send(quizz_blockchain[ra.randint(0,len(quizz_blockchain)-1)])
+
+        case "":
+            await ctx.send(ra.choice(quizz_blockchain[ra.randint(0,len(quizz_blockchain)-1)],quizz_cybersecurity[ra.randint(0,len(quizz_cybersecurity)-1)]))
 @client.command()
 async def nohello(ctx):
     await ctx.send("https://nohello.net/en/")
@@ -113,10 +116,7 @@ async def nohello(ctx):
 async def info(ctx):
     await ctx.send(f"All the code is open source in this repository : https://github.com/0x-Zane/Fokon")
 
-@client.command()
-async def hey(ctx,arg1):
-    if arg1 == "pi":
-        await ctx.send("you sent pi")
+
 
 
 client.run(TOKEN)
