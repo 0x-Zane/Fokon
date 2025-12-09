@@ -5,7 +5,7 @@ from dotenv_vault import load_dotenv
 import random as ra
 
 #-----------------Commands Sources -----------------
-questions = [
+quizz_cybersecurity = [
     # ----------------------------------------------------
     # CYBERSECURITY
     # ----------------------------------------------------
@@ -15,8 +15,8 @@ questions = [
     "What term describes malware that encrypts a user's data and demands a ransom to unlock it? ||Ransomware||",
     "What is the main function of a 'firewall'? ||To filter and control incoming and outgoing network traffic based on established security rules.||",
     "What type of web vulnerability allows an attacker to inject SQL commands into a database? ||SQL Injection||",
-    "In cryptography, what is the term for converting plaintext into an unreadable format? ||Encryption||",
-    
+    "In cryptography, what is the term for converting plaintext into an unreadable format? ||Encryption||"]
+quizz_hardware = [
     # ----------------------------------------------------
     # HARDWARE & ELECTRONICS
     # ----------------------------------------------------
@@ -26,8 +26,8 @@ questions = [
     "What is the role of 'RAM' (Random Access Memory) in a computer? ||To temporarily store data and programs currently being executed for the processor.||",
     "What fundamental law relates Voltage (U), Current (I), and Resistance (R) in electronics? ||Ohm's Law (U = R × I)||" ,
     "Which type of integrated circuit is at the heart of a computer and executes program instructions? ||The CPU (Central Processing Unit) or Processor||",
-    "Which serial communication bus is commonly used to connect external peripherals like mice, keyboards, and external hard drives? ||USB (Universal Serial Bus)||" ,
-    
+    "Which serial communication bus is commonly used to connect external peripherals like mice, keyboards, and external hard drives? ||USB (Universal Serial Bus)||" ]
+quizz_software = [
     # ----------------------------------------------------
     # SOFTWARE & CODE
     # ----------------------------------------------------
@@ -38,8 +38,8 @@ questions = [
     "What does the acronym 'API' stand for? ||Application Programming Interface||",
     "In Python, what is the standard method for adding an item to the end of a list? ||.append()||",
     "Name the three pillars of Object-Oriented Programming (OOP). ||Encapsulation, Inheritance, Polymorphism.||",
-    "What is the standard text-based markup language used to structure content on the World Wide Web? ||HTML (HyperText Markup Language)||" ,
-    
+    "What is the standard text-based markup language used to structure content on the World Wide Web? ||HTML (HyperText Markup Language)||" ]
+quizz_networking = [
     # ----------------------------------------------------
     # INTERNET & NETWORKS
     # ----------------------------------------------------
@@ -48,8 +48,8 @@ questions = [
     "What is the role of 'DNS' (Domain Name System)? ||To translate human-readable domain names (e.g., google.com) into numerical IP addresses.||",
     "Which simple messaging protocol is commonly used for sending emails? ||SMTP (Simple Mail Transfer Protocol)||" ,
     "What is the fundamental difference between HTTP and HTTPS? ||HTTPS uses encryption (TLS/SSL) to secure communication, unlike HTTP.||",
-    "Which network device has the primary function of connecting multiple networks together and directing data packets? ||The Router||",
-    
+    "Which network device has the primary function of connecting multiple networks together and directing data packets? ||The Router||"]
+quizz_blockchain = [
     # ----------------------------------------------------
     # CRYPTO & BLOCKCHAIN
     # ----------------------------------------------------
@@ -57,8 +57,8 @@ questions = [
     "What is the main technical characteristic of a 'blockchain'? ||An immutable, secure chain of data blocks, validated by a peer network and secured by cryptography.||",
     "Which mechanism guarantees both the authenticity and non-repudiation of a digital document? ||Digital signature||",
     "What is the name of the hashing algorithm used by Bitcoin? ||SHA-256||",
-    "In the context of blockchains, what does 'PoW' stand for? ||Proof of Work||",
-    
+    "In the context of blockchains, what does 'PoW' stand for? ||Proof of Work||"]
+quizz_general = [
     # ----------------------------------------------------
     # DIVERSE & TECH CULTURE
     # ----------------------------------------------------
@@ -69,7 +69,7 @@ questions = [
     "Which software development methodology emphasizes rapid delivery and adaptation to change through short, iterative cycles (sprints)? ||Agile Methodology (e.g., Scrum)||",
     "Which software tool allows managing code versions and is essential for teamwork (e.g., commit, push, pull)? ||Git||",
     "What is the fundamental difference between Direct Current (DC) and Alternating Current (AC)? ||DC flows in one direction only, while AC periodically reverses direction.||",
-    "What acronym represents a virtualization technology for packaging an application and its dependencies to ensure it runs reliably in any environment? ||Docker (or Conteneurization)||",
+    "What acronym represents a virtualization technology for packaging an application and its dependencies to ensure it runs reliably in any environment? ||Docker (or Conteneurization)||"
 ]
 
 #---------------------------------------------------
@@ -98,8 +98,13 @@ async def  on_ready():
 async def hello(ctx):
     await ctx.send(f"Hello, {ctx.author} !")
 @client.command()
-async def quizz(ctx): # will add the argument to get a quizz from a certain niche
-    await ctx.send(questions[ra.randint(0,len(questions)-1)])
+async def quizz(ctx,category): # will add the argument to get a quizz from a certain niche
+    match category:
+        case "cybersecurity":
+            await ctx.send(quizz_cybersecurity[ra.randint(0,len(quizz_cybersecurity)-1)])
+
+        case "blockchain":
+            await ctx.send(quizz_blockchain[ra.randint(0,len(quizz_blockchain)-1)])
 @client.command()
 async def nohello(ctx):
     await ctx.send("https://nohello.net/en/")
@@ -107,6 +112,12 @@ async def nohello(ctx):
 @client.command()
 async def info(ctx):
     await ctx.send(f"All the code is open source in this repository : https://github.com/0x-Zane/Fokon")
+
+@client.command()
+async def hey(ctx,arg1):
+    if arg1 == "pi":
+        await ctx.send("you sent pi")
+
 
 client.run(TOKEN)
 
