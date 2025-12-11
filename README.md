@@ -33,7 +33,9 @@ The bot will handle these commands:
 /resistance_code n{color}   with n number of arguments , you input the color of the resistance in 
 the correct order and the bot will help you knowing the resistance value
 
+--SCIENCE--
 
+/periodic {element} # we take element.lower and get from a dictionnary or small db the information of the element
 --GAMING--
 
 /steam track
