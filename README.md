@@ -1,7 +1,8 @@
 # Fokon
 Fokon discord bot source code
 
-
+The official documentation of discord.ext commands that are used is available in this link:
+https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.Context
 
 First of all to use the bot you will need to install the dependencies with 
 
