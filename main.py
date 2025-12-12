@@ -93,7 +93,11 @@ client = commands.Bot(command_prefix= "/",intents=bot_intents)
 @client.event 
 async def  on_ready():
     print(f"The bot is now ready for use as {client.user} ")
-
+    try:
+        synced = await client.tree.sync()
+        print(f"Successfully synced {len(synced)} commands  !")
+    except Exception as e:
+        print(e)
 @client.command()
 async def hello(ctx):
     await ctx.send(f"Hello, {ctx.author} !")
@@ -116,9 +120,13 @@ async def nohello(ctx):
 async def info(ctx):
     await ctx.send(f"All the code is open source in this repository : https://github.com/0x-Zane/Fokon")
 
+@client.command()
+async def whereami(ctx):
+    await ctx.reply(f"Hello {ctx.author}, you are in {ctx.guild} in the channel {ctx.channel}, i am {ctx.me} AKA FOKON .")
 
-
-
+@client.tree.command(name="hello")
+async def hello(interaction : discord.Interaction):
+    await interaction.response.send_message(f"Hey {interaction.user.mention}")
 client.run(TOKEN)
 
 
