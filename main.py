@@ -54,11 +54,11 @@ async def nohello(interaction : discord.Interaction):
     await interaction.response.send_message("https://nohello.net/en/")
 
 
-@client.tree.command(name = "whereami")
-async def whereami(interaction : discord.Interaction):
-    await interaction.response.send_message(f"Hello {interaction.user}, you are in {interaction.guild} in the channel {interaction.channel}, i am {interaction.me} AKA FOKON .")
 
-
+@client.tree.command(name = "random")
+@app_commands.describe(min = "Choose a minimum number", max  = "CHoose a maximum number")
+async def quizz(interaction: discord.Interaction,min:int,max:int):
+    await interaction.response.send_message(ra.randint(min,max))
 
 
 client.run(TOKEN)
