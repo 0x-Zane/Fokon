@@ -47,10 +47,16 @@ async def  on_ready():
 
 
 @client.tree.command(name = "quizz")
-@app_commands.describe(category = "Choose a category")
+@app_commands.describe(category = "Choose a category".lower())
 async def quizz(interaction: discord.Interaction,category:str): # will add the argument to get a quizz from a certain niche
-            
-            await interaction.response.send_message(quizz_data[category][ra.randint(0,len(quizz_data["quizz_cybersecurity"])-1)])
+    embed = discord.Embed(title=category,description=f"category :{category}",color=discord.Color.red(),url=f'https://en.wikipedia.org/wiki/{category}')  
+    #embed.set_thumbnail(url="")   
+    # 
+    embed.add_field(name="",value="Insert quizz here")   
+    await interaction.response.send_message(embed=embed)
+    
+
+           # await interaction.response.send_message(quizz_data[category][ra.randint(0,len(quizz_data["quizz_cybersecurity"])-1)])
 
 
 @client.tree.command(name="nohello")
@@ -61,15 +67,14 @@ async def nohello(interaction : discord.Interaction):
 
 @client.tree.command(name = "random")
 @app_commands.describe(min = "Choose a minimum number", max  = "Choose a maximum number")
-async def quizz(interaction: discord.Interaction,min:int,max:int):
+async def random(interaction: discord.Interaction,min:int,max:int):
     await interaction.response.send_message(ra.randint(min,max))
-
-
+'''
 @client.tree.command(name = "periodic")
-@app_commands.describe(element = "")
-async def quizz(interaction: discord.Interaction,element:str):
+@app_commands.describe(element = "",description="selection of the element to look for ")
+async def periodic(interaction: discord.Interaction,element:str):
     await interaction.response.send_message("In developpement")    
-
+'''
 
 client.run(TOKEN)
 
