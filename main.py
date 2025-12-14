@@ -13,6 +13,10 @@ import json
 
 with open('Fokon/quizz.json', 'r') as quizzes:
     quizz_data = json.load(quizzes)
+with open('Fokon/periodic.json', 'r') as periodic:
+    periodic_data = json.load(periodic)
+
+
 
     #DEFINING INTENTS
 bot_intents = discord.Intents.default()
@@ -56,9 +60,15 @@ async def nohello(interaction : discord.Interaction):
 
 
 @client.tree.command(name = "random")
-@app_commands.describe(min = "Choose a minimum number", max  = "CHoose a maximum number")
+@app_commands.describe(min = "Choose a minimum number", max  = "Choose a maximum number")
 async def quizz(interaction: discord.Interaction,min:int,max:int):
     await interaction.response.send_message(ra.randint(min,max))
+
+
+@client.tree.command(name = "periodic")
+@app_commands.describe(element = "")
+async def quizz(interaction: discord.Interaction,element:str):
+    await interaction.response.send_message("In developpement")    
 
 
 client.run(TOKEN)

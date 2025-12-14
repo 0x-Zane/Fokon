@@ -1,0 +1,90 @@
+{
+  "elements": [
+    {
+      "name": "Hydrogen",
+      "symbol": "H",
+      "number": 1,
+      "atomic_mass": 1.008,
+      "category": "diatomic nonmetal",
+      "phase": "Gas",
+      "density": 0.08988,
+      "melt": 13.99, 
+      "boil": 20.271, 
+      "electronic_configuration": "1s¹",
+      "shells": [1],
+      "discovered_by": "Henry Cavendish"
+    },
+    {
+      "name": "Helium",
+      "symbol": "He",
+      "number": 2,
+      "atomic_mass": 4.002602,
+      "category": "noble gas",
+      "phase": "Gas",
+      "density": 0.1786,
+      "melt": 0.95,
+      "boil": 4.22,
+      "electronic_configuration": "1s²",
+      "shells": [2],
+      "discovered_by": "Pierre Janssen"
+    },
+    {
+      "name": "Lithium",
+      "symbol": "Li",
+      "number": 3,
+      "atomic_mass": 6.94,
+      "category": "alkali metal",
+      "phase": "Solid",
+      "density": 0.534,
+      "melt": 453.65,
+      "boil": 1615,
+      "electronic_configuration": "[He] 2s¹",
+      "shells": [2, 1],
+      "discovered_by": "Johan August Arfwedson"
+    },
+
+  {
+    "name": "Beryllium",
+    "symbol": "Be",
+    "number": 4,
+    "atomic_mass": 9.0121831,
+    "category": "alkaline earth metal",
+    "phase": "Solid",
+    "density": 1.85,
+    "melt": 1560.15,
+    "boil": 2742,
+    "electronic_configuration": "[He] 2s²",
+    "shells": [2, 2],
+    "discovered_by": "Louis Nicolas Vauquelin"
+  },
+  {
+    "name": "Boron",
+    "symbol": "B",
+    "number": 5,
+    "atomic_mass": 10.81,
+    "category": "metalloid",
+    "phase": "Solid",
+    "density": 2.34,
+    "melt": 2348,
+    "boil": 4200,
+    "electronic_configuration": "[He] 2s² 2p¹",
+    "shells": [2, 3],
+    "discovered_by": "Joseph Louis Gay-Lussac"
+  },
+  {
+    "name": "Carbon",
+    "symbol": "C",
+    "number": 6,
+    "atomic_mass": 12.011,
+    "category": "polyatomic nonmetal",
+    "phase": "Solid",
+    "density": 2.267,
+    "melt": 3800,
+    "boil": 4300,
+    "electronic_configuration": "[He] 2s² 2p²",
+    "shells": [2, 4],
+    "discovered_by": "Ancient"
+  }
+
+]
+}
