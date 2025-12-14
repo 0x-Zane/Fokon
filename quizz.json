@@ -1,5 +1,5 @@
 {
-"quizz_cybersecurity" : [
+"cybersecurity" : [
     "What is the name of the technique where an attacker impersonates a trusted entity to obtain sensitive information? ||Phishing||",
     "Which secure network protocol uses port 443 to encrypt web communications? ||HTTPS (HyperText Transfer Protocol Secure)||" ,
     "What does the acronym 'DDoS' stand for in the context of network attacks? ||Distributed Denial of Service||",
@@ -14,7 +14,7 @@
     "Which security measure uses behavioral analysis and patterns to detect internal threats? ||SIEM (Security Information and Event Management) or UEBA (User and Entity Behavior Analytics)||",
     "What is the name of the file or record that stores the history of a user's actions on a system? ||Audit log or Access log||"
 ],
-"quizz_hardware" : [
+"hardware" : [
     "Which unit of measurement expresses the clock speed of a processor? ||Hertz (Hz) or Gigahertz (GHz)||" ,
     "In an electronic circuit, which component is capable of storing an electrical charge and is measured in Farads? ||The Capacitor||",
     "Which component is considered the basic building block of digital electronics, acting as a controlled switch? ||The Transistor|| ",
@@ -29,7 +29,7 @@
     "In electronics, what is a 'pull-up' or 'pull-down' resistor used for? ||To ensure that a digital input pin has a defined state (HIGH or LOW) when no external signal is applied.||",
     "What is the name of the circuit board that connects all the computer components (CPU, RAM, GPU, etc.)? ||The Motherboard or Mainboard||"
 ],
-"quizz_software" : [
+"software" : [
     "Which data structure uses the 'LIFO' (Last-In, First-Out) principle? ||The Stack||",
     "In Object-Oriented Programming (OOP), what does 'Inheritance' mean? ||The mechanism by which one class acquires the properties and methods of another class (its parent class).||",
     "What is the primary role of a 'compiler'? ||To translate source code written in a high-level language into machine language (binary code) executable by the processor.||",
@@ -44,7 +44,7 @@
     "In programming, what is the process of finding and fixing errors or bugs in source code? ||Debugging||",
     "What is the name of the technique where a function calls itself? ||Recursion||"
 ],
-"quizz_networking" : [
+"networking" : [
     "What is the most common layered model used to describe network communications? ||TCP/IP Model|| ",
     "What does an 'IP address' represent? ||A unique identifier assigned to every device connected to a network that uses the Internet Protocol.||",
     "What is the role of 'DNS' (Domain Name System)? ||To translate human-readable domain names (e.g., google.com) into numerical IP addresses.||",
@@ -58,7 +58,7 @@
     "What is the difference between a LAN and a WAN? ||A LAN (Local Area Network) covers a small area (e.g., a home or office), while a WAN (Wide Area Network) covers a large geographical area (e.g., the Internet).||",
     "What is the main function of a 'Switch' in a network? ||To connect devices within the same network and forward data frames only to the intended recipient based on MAC addresses.||"
 ],
-"quizz_blockchain" : [
+"blockchain" : [
     "What is a 'hash' in cryptography? ||The output of a mathematical function (hashing function) that produces a fixed-size, unique fingerprint for any input data.||",
     "What is the main technical characteristic of a 'blockchain'? ||An immutable, secure chain of data blocks, validated by a peer network and secured by cryptography.||",
     "Which mechanism guarantees both the authenticity and non-repudiation of a digital document? ||Digital signature||",
@@ -71,7 +71,7 @@
     "What is the term for the shared, synchronized, and replicated database that forms the blockchain? ||Distributed Ledger Technology (DLT)||",
     "What is a 'fork' in a blockchain? ||A divergence in the chain of blocks, often resulting in two separate versions of the ledger.||"
 ],
-"quizz_3dmodeling" : [
+"3dmodeling" : [
     "What are the three main axes in a standard 3D coordinate system? ||X (width), Y (height), and Z (depth)||",
     "What does the acronym 'CAD' stand for in the context of design and modeling? ||Computer-Aided Design||",
     "What are the three fundamental components (or primitives) that typically define the geometry of a 3D mesh? ||Vertices (points), Edges (lines), and Faces (surfaces/triangles)||",
@@ -83,7 +83,7 @@
     "What is the process of reducing the number of polygons in a 3D mesh to simplify it for better performance? ||Decimation or Optimization||",
     "What does 'Rigging' involve in 3D character animation? ||Creating a system of bones and joints (a skeleton) and controls to allow the animator to move the character.||"
 ],
-"quizz_webdevelopment" : [
+"webdevelopment" : [
     "What is the purpose of 'CSS' (Cascading Style Sheets)? ||To define the style, layout, and visual presentation of a web page written in HTML.||",
     "Which programming language is essential for making web pages interactive (e.g., dynamic content, form validation)? ||JavaScript||",
     "What does 'DOM' stand for in the context of web browsers? ||Document Object Model||",
@@ -96,7 +96,7 @@
     "What is the primary function of a 'version control system' (like Git) in development? ||To track and manage changes to code over time, allowing multiple developers to collaborate without conflict.||",
     "What is a 'Transpiler' (or Source-to-Source Compiler) often used for in modern web development? ||To convert code written in a newer version of a language (e.g., ES6+ JavaScript, TypeScript) into an older version that is compatible with all browsers.||"
 ],
-"quizz_general" :[
+"general" :[
     "What is the programming language most often used to style the look and feel of web pages (colors, fonts, layout)? ||CSS (Cascading Style Sheets)||" ,
     "Who invented the World Wide Web (WWW)? ||Tim Berners-Lee||",
     "Which operating system is based on the Linux kernel and is very popular among developers? ||GNU/Linux (e.g., Ubuntu or Debian)||" ,

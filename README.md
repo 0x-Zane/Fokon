@@ -26,7 +26,9 @@ The bot will handle these commands:
 /quizz #Get a random developper question to answer
 
 /nohello #Sends the nohello.net link
+
 /sleep_calculator {wake_up} {wanted_cycle(default:190min)}  # returns the next best sleep hours
+
 --ELECTRONICS--
 
 /Current {voltage} {resistance}
