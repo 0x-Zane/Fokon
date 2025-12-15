@@ -1,4 +1,5 @@
 # Fokon
+https://github.com/0x-Zane/Fokon/blob/main/assets/fokon_banner.png?raw=true
 Fokon discord bot source code
 
 The official documentation of discord.ext commands that are used is available in this link:
