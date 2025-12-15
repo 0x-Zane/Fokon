@@ -1,6 +1,6 @@
 # Fokon
 
-![image alt](https://github.com/0x-Zane/Fokon/blob/4191b567f73222b0ccde64a45cceef9d03068135/assets/fokon_banner.png)
+![image alt](https://github.com/0x-Zane/Fokon/blob/7eaa9e36eeabff5597c3f842cb1eb0a59a60eea8/assets/banner_fokon.png)
 
 Fokon discord bot source code
 
