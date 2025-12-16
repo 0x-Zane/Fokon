@@ -2,7 +2,7 @@
 
 # FOKON 
 
-Fokon is a discord bot created in python during the 2025 discord hackaton with a view to help developpers, science amateurs, gamers and all type of people interested in computers and general science in their daily tasks or to learn more and train their skills.
+Fokon is a discord bot created in python during the 2025 discord buildathon with a view to help developpers, science amateurs, gamers and all type of people interested in computers and general science in their daily tasks or to learn more and train their skills.
 
 The bot supports slash commands with a bunch of categories of commands that we'll explore later on this page.
 
