@@ -95,21 +95,5 @@
     "What is the term for the storage mechanism that allows a website to save small pieces of information in the user's browser? ||Cookies or Local Storage||",
     "What is the primary function of a 'version control system' (like Git) in development? ||To track and manage changes to code over time, allowing multiple developers to collaborate without conflict.||",
     "What is a 'Transpiler' (or Source-to-Source Compiler) often used for in modern web development? ||To convert code written in a newer version of a language (e.g., ES6+ JavaScript, TypeScript) into an older version that is compatible with all browsers.||"
-],
-"general" :[
-    "What is the programming language most often used to style the look and feel of web pages (colors, fonts, layout)? ||CSS (Cascading Style Sheets)||" ,
-    "Who invented the World Wide Web (WWW)? ||Tim Berners-Lee||",
-    "Which operating system is based on the Linux kernel and is very popular among developers? ||GNU/Linux (e.g., Ubuntu or Debian)||" ,
-    "What concept describes the practice of entrusting the hosting and execution of applications to remote servers via the Internet? ||Cloud Computing||",
-    "Which software development methodology emphasizes rapid delivery and adaptation to change through short, iterative cycles (sprints)? ||Agile Methodology (e.g., Scrum)||",
-    "Which software tool allows managing code versions and is essential for teamwork (e.g., commit, push, pull)? ||Git||",
-    "What is the fundamental difference between Direct Current (DC) and Alternating Current (AC)? ||DC flows in one direction only, while AC periodically reverses direction.|| ",
-    "What acronym represents a virtualization technology for packaging an application and its dependencies to ensure it runs reliably in any environment? ||Docker (or Containerization)||" ,
-    "What is a common unit of measurement for electrical energy consumption? ||Watt-hour (Wh) or Kilowatt-hour (kWh)||",
-    "What is the name of the set of principles governing the design of a user interface to make it intuitive and efficient? ||User Experience (UX) and User Interface (UI) Design||",
-    "What is the 'Moore's Law' primarily about in the context of microelectronics? ||The observation that the number of transistors on a microchip doubles approximately every two years.||",
-    "What are the two main types of virtualization commonly used today? ||Hardware virtualization (e.g., Virtual Machines) and Operating System virtualization (e.g., Containers/Docker)||",
-    "What term describes the mathematical field that studies the efficient manipulation of data and algorithms? ||Computer Science (or Algorithmic Theory)||",
-    "In the context of the environment, what does the acronym 'IoT' stand for? ||Internet of Things||"
 ]
 }

@@ -49,16 +49,19 @@ async def  on_ready():
 @client.tree.command(name = "quizz")
 @app_commands.describe(category = "Choose a category".lower())
 async def quizz(interaction: discord.Interaction,category:str): # will add the argument to get a quizz from a certain niche
-    embed = discord.Embed(title=category,description=f"category :{category}",color=discord.Color.red(),url=f'https://en.wikipedia.org/wiki/{category}')  
-    #embed.set_thumbnail(url="")   
-    # 
-    embed.add_field(name="",value="Insert quizz here")   
-    await interaction.response.send_message(embed=embed)
-    
+    try:
+        embed = discord.Embed(title=category.upper(),description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{category}')  
+        #embed.set_thumbnail(url="")   
+        
+        embed.add_field(name="",value=quizz_data[category][ra.randint(0,len(quizz_data[category])-1)])   
+        await interaction.response.send_message(embed=embed)
+        
 
-           # await interaction.response.send_message(quizz_data[category][ra.randint(0,len(quizz_data["quizz_cybersecurity"])-1)])
+            # await interaction.response.send_message(quizz_data[category][ra.randint(0,len(quizz_data["quizz_cybersecurity"])-1)])
 
-
+    except:
+        await interaction.response.send_message(f"{category} is not an available category. ")
+        
 @client.tree.command(name="nohello")
 async def nohello(interaction : discord.Interaction):
     await interaction.response.send_message("https://nohello.net/en/")
