@@ -11,9 +11,9 @@ import json
 
 #---------------------------------------------------
 
-with open('Fokon/quizz.json', 'r') as quizzes:
+with open('Fokon/assets/text_sources/quizz.json', 'r') as quizzes:
     quizz_data = json.load(quizzes)
-with open('Fokon/periodic.json', 'r') as periodic:
+with open('Fokon/assets/text_sources/periodic.json', 'r') as periodic:
     periodic_data = json.load(periodic)
 
 
