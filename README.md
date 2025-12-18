@@ -29,7 +29,6 @@ Video coming soon...
 
 Current available categories:
 
-- general
 - software
 - hardware
 - cybersecurity
