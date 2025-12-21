@@ -78,15 +78,48 @@ async def random(interaction: discord.Interaction,min:int,max:int):
 @app_commands.describe(element = "Type in the number of the element")
 async def periodic(interaction: discord.Interaction,element:str):
 
+
+
+
     if element.isdigit():
         element = int(element)
       
         try:
-            await interaction.response.send_message(periodic_data["elements"][element-1])
+            name = periodic_data["elements"][element-1]["name"]
+            symbol= periodic_data["elements"][element-1]["symbol"]
+            mass = periodic_data["elements"][element-1]["atomic_mass"]
+            category = periodic_data["elements"][element-1]["category"]
+            density = periodic_data["elements"][element-1]["density"]
+            boil = periodic_data["elements"][element-1]["boil"]
+            phase = periodic_data["elements"][element-1]["phase"]
+            melt = periodic_data["elements"][element-1]["melt"]
+            shells = periodic_data["elements"][element-1]["shells"]
+            electronic_configuration = periodic_data["elements"][element-1]["electronic_configuration"]
+            discovered_by = periodic_data["elements"][element-1]["discovered_by"]
+
+            embed = discord.Embed(title=name,description="blabla",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
+            embed.set_thumbnail(url=f"https://images-of-elements.com/s/{name}.jpg")   
+            
+            embed.add_field(name="symbol",value=symbol)   
+            embed.add_field(name="atomic_mass",value=mass)  
+            embed.add_field(name="category",value=category)  
+            embed.add_field(name="density",value=density)  
+            embed.add_field(name="boil",value=boil)  
+            embed.add_field(name="phase",value=phase)  
+            embed.add_field(name="melt",value=melt)  
+            embed.add_field(name="shells",value=shells)  
+            embed.add_field(name="electronic_configuration",value=electronic_configuration)  
+            embed.add_field(name="discovered_by",value="https://en.wikipedia.org/{discovered_by}")  
+            await interaction.response.send_message(embed=embed)
+
+
+
+
+            
         except:
             await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
 
-            
+
 
     elif len(element) == 2:
         try:
@@ -100,7 +133,7 @@ async def periodic(interaction: discord.Interaction,element:str):
         try:
             pass
         except:
-            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique") 
+            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
 
 
 client.run(TOKEN)
