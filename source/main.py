@@ -11,9 +11,9 @@ import json
 
 #---------------------------------------------------
 
-with open('Fokon/assets/text_sources/quizz.json', 'r') as quizzes:
+with open('assets/text_sources/quizz.json', 'r') as quizzes:
     quizz_data = json.load(quizzes)
-with open('Fokon/assets/text_sources/periodic.json', 'r') as periodic:
+with open('assets/text_sources/periodic.json', 'r') as periodic:
     periodic_data = json.load(periodic)
 
 
@@ -72,12 +72,36 @@ async def nohello(interaction : discord.Interaction):
 @app_commands.describe(min = "Choose a minimum number", max  = "Choose a maximum number")
 async def random(interaction: discord.Interaction,min:int,max:int):
     await interaction.response.send_message(ra.randint(min,max))
-'''
+
+
 @client.tree.command(name = "periodic")
-@app_commands.describe(element = "",description="selection of the element to look for ")
+@app_commands.describe(element = "Type in the number of the element")
 async def periodic(interaction: discord.Interaction,element:str):
-    await interaction.response.send_message("In developpement")    
-'''
+
+    if element.isdigit():
+        element = int(element)
+      
+        try:
+            await interaction.response.send_message(periodic_data["elements"][element-1])
+        except:
+            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
+
+            
+
+    elif len(element) == 2:
+        try:
+            pass
+        except:
+            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
+        #donc c'est un symbole
+
+    else:
+        #donc c'est le nom de l'élément
+        try:
+            pass
+        except:
+            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique") 
+
 
 client.run(TOKEN)
 
