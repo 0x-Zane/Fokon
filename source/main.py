@@ -50,7 +50,7 @@ async def  on_ready():
 @app_commands.describe(category = "Choose a category".lower())
 async def quizz(interaction: discord.Interaction,category:str): # will add the argument to get a quizz from a certain niche
     try:
-        embed = discord.Embed(title=category.upper(),description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{category}')  
+        embed = discord.Embed(title=category.upper(),description="",color=discord.Color.yellow(),url=f'https://en.wikipedia.org/wiki/{category}')  
         #embed.set_thumbnail(url="")   
         
         embed.add_field(name="",value=quizz_data[category][ra.randint(0,len(quizz_data[category])-1)])   
@@ -97,8 +97,8 @@ async def periodic(interaction: discord.Interaction,element:str):
             electronic_configuration = periodic_data["elements"][element-1]["electronic_configuration"]
             discovered_by = periodic_data["elements"][element-1]["discovered_by"]
 
-            embed = discord.Embed(title=name,description="blabla",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
-            embed.set_thumbnail(url=f"https://images-of-elements.com/s/{name}.jpg")   
+            embed = discord.Embed(title=name,description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
+             
             
             embed.add_field(name="symbol",value=symbol)   
             embed.add_field(name="atomic_mass",value=mass)  
@@ -106,10 +106,12 @@ async def periodic(interaction: discord.Interaction,element:str):
             embed.add_field(name="density",value=density)  
             embed.add_field(name="boil",value=boil)  
             embed.add_field(name="phase",value=phase)  
-            embed.add_field(name="melt",value=melt)  
+            embed.add_field(name="melt",value=str(melt)+"K")  
             embed.add_field(name="shells",value=shells)  
             embed.add_field(name="electronic_configuration",value=electronic_configuration)  
-            embed.add_field(name="discovered_by",value="https://en.wikipedia.org/{discovered_by}")  
+            embed.add_field(name="discovered_by",value=discovered_by)  
+            embed.set_thumbnail(url=f"https://images-of-elements.com/s/{name.lower()}.jpg")  
+
             await interaction.response.send_message(embed=embed)
 
 
@@ -117,7 +119,7 @@ async def periodic(interaction: discord.Interaction,element:str):
 
             
         except:
-            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
+            await interaction.response.send_message(f"{element} is not in the periodic table")
 
 
 
