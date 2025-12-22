@@ -79,13 +79,13 @@ async def random(interaction: discord.Interaction,min:int,max:int):
 
 
 @client.tree.command(name = "periodic")
-@app_commands.describe(element = "Type in the number of the element")
+@app_commands.describe(element = "Please provide the atomic number/symbol/name of the wanted element.")
 async def periodic(interaction: discord.Interaction,element:str):
 
 
 
 
-    if element.isdigit():
+    if element.isdigit(): # Checking if the argument is the atomic number 
         element = int(element)
       
         try:
@@ -99,7 +99,10 @@ async def periodic(interaction: discord.Interaction,element:str):
             melt = periodic_data["elements"][element-1]["melt"]
             shells = periodic_data["elements"][element-1]["shells"]
             electronic_configuration = periodic_data["elements"][element-1]["electronic_configuration"]
-            discovered_by = periodic_data["elements"][element-1]["discovered_by"]
+            try:
+                discovered_by = periodic_data["elements"][element-1]["discovered_by"]
+            except:
+                discovered_by = "Unknown"
 
             embed = discord.Embed(title=name,description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
              
@@ -109,11 +112,16 @@ async def periodic(interaction: discord.Interaction,element:str):
             embed.add_field(name="category",value=category)  
             embed.add_field(name="density",value=density)  
             embed.add_field(name="boil",value=boil)  
-            embed.add_field(name="phase",value=phase)  
-            embed.add_field(name="melt",value=str(melt)+"K")  
+            embed.add_field(name="phase",value=phase)
+            if melt != None:  
+                embed.add_field(name="melt",value=str(melt)+"K")  
+            else:
+                embed.add_field(name="melt",value="Unavailable")  
+
             embed.add_field(name="shells",value=shells)  
             embed.add_field(name="electronic_configuration",value=electronic_configuration)  
             embed.add_field(name="discovered_by",value=discovered_by)  
+            embed.add_field(name="WARNING",value=" ⚠️ Fokon sometimes makes mistakes, if you spot one , please create a pull request with needed modifications on periodic.json file  .")
             embed.set_thumbnail(url=f"https://images-of-elements.com/s/{name.lower()}.jpg")  
 
             await interaction.response.send_message(embed=embed)
@@ -122,24 +130,121 @@ async def periodic(interaction: discord.Interaction,element:str):
 
 
             
-        except:
-            await interaction.response.send_message(f"{element} is not in the periodic table")
+        except Exception as e:
+            await interaction.response.send_message(f"{element} is not in the periodic table, don't forget that the periodic table starts at 1 and ends at 118.")
 
 
 
-    elif len(element) == 2:
+    elif len(element) == 2 or len(element) == 1: #checking if the argument is the symbol
+        element = element.lower().title()
         try:
-            pass
-        except:
-            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
-        #donc c'est un symbole
+            found = False
+            i = 0
+            while not found and i <= len(periodic_data["elements"]):
+                if periodic_data["elements"][i]["symbol"] == element:
+                    found = True
 
-    else:
-        #donc c'est le nom de l'élément
+                    name = periodic_data["elements"][i]["name"]
+                    symbol= periodic_data["elements"][i]["symbol"]
+                    mass = periodic_data["elements"][i]["atomic_mass"]
+                    category = periodic_data["elements"][i]["category"]
+                    density = periodic_data["elements"][i]["density"]
+                    boil = periodic_data["elements"][i]["boil"]
+                    phase = periodic_data["elements"][i]["phase"]
+                    melt = periodic_data["elements"][i]["melt"]
+                    shells = periodic_data["elements"][i]["shells"]
+                    electronic_configuration = periodic_data["elements"][i]["electronic_configuration"]
+                    try:
+                        discovered_by = periodic_data["elements"][i-1]["discovered_by"]
+                    except:
+                        discovered_by = "Unknown"
+
+                    embed = discord.Embed(title=name,description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
+                    
+                    
+                    embed.add_field(name="symbol",value=symbol)   
+                    embed.add_field(name="atomic_mass",value=mass)  
+                    embed.add_field(name="category",value=category)  
+                    embed.add_field(name="density",value=density)  
+                    embed.add_field(name="boil",value=boil)  
+                    embed.add_field(name="phase",value=phase)
+                    if melt != None:  
+                        embed.add_field(name="melt",value=str(melt)+"K")  
+                    else:
+                        embed.add_field(name="melt",value="Unavailable")  
+
+                    embed.add_field(name="shells",value=shells)  
+                    embed.add_field(name="electronic_configuration",value=electronic_configuration)  
+                    embed.add_field(name="discovered_by",value= discovered_by)  
+                    embed.add_field(name="WARNING",value=" ⚠️ Fokon sometimes makes mistakes, if you spot one , please create a pull request with needed modifications on periodic.json file  .")
+                    embed.set_thumbnail(url=f"https://images-of-elements.com/s/{name.lower()}.jpg")  
+
+                    await interaction.response.send_message(embed=embed)
+                    
+
+
+
+                else :
+                    i+=1
+        except :
+            await interaction.response.send_message(f"{element} is not available in periodic table")
+
+
+    else: #Otherwise, assuming that it's the english name of the element
+        
+    
+        element = element.lower().title()
         try:
-            pass
+            found = False
+            i = 0
+            while not found and i <= len(periodic_data["elements"]):
+                if periodic_data["elements"][i]["name"] == element:
+                    found = True
+
+                    name = periodic_data["elements"][i]["name"]
+                    symbol= periodic_data["elements"][i]["symbol"]
+                    mass = periodic_data["elements"][i]["atomic_mass"]
+                    category = periodic_data["elements"][i]["category"]
+                    density = periodic_data["elements"][i]["density"]
+                    boil = periodic_data["elements"][i]["boil"]
+                    phase = periodic_data["elements"][i]["phase"]
+                    melt = periodic_data["elements"][i]["melt"]
+                    shells = periodic_data["elements"][i]["shells"]
+                    electronic_configuration = periodic_data["elements"][i]["electronic_configuration"]
+                    try:
+                        discovered_by = periodic_data["elements"][i-1]["discovered_by"]
+                    except:
+                        discovered_by = "Unknown"
+
+                    embed = discord.Embed(title=name,description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
+                    
+                    
+                    embed.add_field(name="symbol",value=symbol)   
+                    embed.add_field(name="atomic_mass",value=mass)  
+                    embed.add_field(name="category",value=category)  
+                    embed.add_field(name="density",value=density)  
+                    embed.add_field(name="boil",value=boil)  
+                    embed.add_field(name="phase",value=phase)
+                    if melt != None:  
+                        embed.add_field(name="melt",value=str(melt)+"K")  
+                    else:
+                        embed.add_field(name="melt",value="Unavailable")  
+
+                    embed.add_field(name="shells",value=shells)  
+                    embed.add_field(name="electronic_configuration",value=electronic_configuration)  
+                    embed.add_field(name="discovered_by",value=discovered_by)  
+                    embed.add_field(name="WARNING",value=" ⚠️ Fokon sometimes makes mistakes, if you spot one , please create a pull request with needed modifications on periodic.json file  .")
+                    embed.set_thumbnail(url=f"https://images-of-elements.com/s/{name.lower()}.jpg")  
+
+                    await interaction.response.send_message(embed=embed)
+                    
+
+
+
+                else :
+                    i+=1
         except:
-            await interaction.response.send_message(f"{element} n'est pas dans le tableau periodique")
+            await interaction.response.send_message(f"{element} is not available in periodic table")
 
 
 client.run(TOKEN)
