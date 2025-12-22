@@ -13,8 +13,7 @@ The bot supports slash commands with a bunch of categories of commands that we'l
 
 ## PREVIEW
 
-Video coming soon...
-**The discord bot is available on this [Discord server](https://discord.gg/3nC9p2Mhm5)**
+Coming soon...
 
 
 ---
