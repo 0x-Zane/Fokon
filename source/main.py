@@ -67,6 +67,10 @@ async def nohello(interaction : discord.Interaction):
     await interaction.response.send_message("https://nohello.net/en/")
 
 
+@client.tree.command(name="dontasktoask")
+async def dontasktoask(interaction : discord.Interaction):
+    await interaction.response.send_message("https://dontasktoask.com")
+
 
 @client.tree.command(name = "random")
 @app_commands.describe(min = "Choose a minimum number", max  = "Choose a maximum number")
