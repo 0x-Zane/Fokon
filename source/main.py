@@ -8,7 +8,9 @@ import json
 
 
 #-----------------Commands Sources -----------------
-
+red = discord.Color.red()
+blue = discord.Color.blue()
+yellow = discord.Color.yellow()
 #---------------------------------------------------
 
 with open('assets/text_sources/quizz.json', 'r') as quizzes:
@@ -50,7 +52,7 @@ async def  on_ready():
 @app_commands.describe(category = "Choose a category".lower())
 async def quizz(interaction: discord.Interaction,category:str): # will add the argument to get a quizz from a certain niche
     try:
-        embed = discord.Embed(title=category.upper(),description="",color=discord.Color.yellow(),url=f'https://en.wikipedia.org/wiki/{category}')  
+        embed = discord.Embed(title=category.upper(),description="",color=yellow,url=f'https://en.wikipedia.org/wiki/{category}')  
         #embed.set_thumbnail(url="")   
         
         embed.add_field(name="",value=quizz_data[category][ra.randint(0,len(quizz_data[category])-1)])   
@@ -104,7 +106,7 @@ async def periodic(interaction: discord.Interaction,element:str):
             except:
                 discovered_by = "Unknown"
 
-            embed = discord.Embed(title=name,description="",color=discord.Color.blue(),url=f'https://en.wikipedia.org/wiki/{name}')  
+            embed = discord.Embed(title=name,description="",color=blue,url=f'https://en.wikipedia.org/wiki/{name}')  
              
             
             embed.add_field(name="symbol",value=symbol)   
