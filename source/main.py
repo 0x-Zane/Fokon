@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import os
-from dotenv_vault import load_dotenv
+from dotenv import load_dotenv
 import random as ra
 import json
 
@@ -13,9 +13,9 @@ blue = discord.Color.blue()
 yellow = discord.Color.yellow()
 #---------------------------------------------------
 
-with open('assets/text_sources/quizz.json', 'r') as quizzes:
+with open('assets/text_sources/quizz.json', 'r',encoding="utf-8") as quizzes:
     quizz_data = json.load(quizzes)
-with open('assets/text_sources/periodic.json', 'r') as periodic:
+with open('assets/text_sources/periodic.json', 'r',encoding="utf-8") as periodic:
     periodic_data = json.load(periodic)
 
 
