@@ -36,11 +36,19 @@ Current available categories:
 - webdeveloppement
 - networking
 
+**/periodic {element}**
+element argument can be :
+-symbol
+-element name
+-atomic number
 
 **/nohello**
 
 
 **/random {minimum} {maximum}**
+
+**/github {repo}**
+repo argument needs to be in this format ``username/repositoryname``
 
 ---
 
@@ -68,7 +76,7 @@ There is 3 main zones on this repo that could need ameliorations:
 
 Thanks to the community of [Discord developpers](https://discord.gg/discord-developers) for supporting the project and providing good ideas and inspirations.
 
-
+The code to display github repository informations is inspired by Rachelle Palmer from her ![Post](https://dev.to/techbelle/how-to-retrieve-github-repository-data-using-python-59g3) on dev.io
 
 
 
@@ -81,7 +89,7 @@ GENERAL
 
 ~~/random {x} {y}  #Generates a random number between x and y ~~
 
-/github {repository_link} #Get the informations of a repository
+~~/github {repository_link} #Get the informations of a repository~~
 
 ~~/quizz #Get a random developper question to answer~~
 

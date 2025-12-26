@@ -5,13 +5,14 @@ import os
 from dotenv import load_dotenv
 import random as ra
 import json
+import requests
 
 
-#-----------------Commands Sources -----------------
+#-----------------Commands Sources-----------------
 red = discord.Color.red()
 blue = discord.Color.blue()
 yellow = discord.Color.yellow()
-#---------------------------------------------------
+#------------------Loading Json data------------------
 
 with open('assets/text_sources/quizz.json', 'r',encoding="utf-8") as quizzes:
     quizz_data = json.load(quizzes)
@@ -42,7 +43,7 @@ async def  on_ready():
     print(f"The bot is now ready for use as {client.user} ")
     try:
         synced = await client.tree.sync() #Synchronize slash commands from the bot with discord
-        print(f"Successfully synced {len(synced)} commands as !")
+        print(f"Successfully synced {len(synced)} commands.")
     except Exception as e:
         print(e)
 
@@ -247,6 +248,84 @@ async def periodic(interaction: discord.Interaction,element:str):
                     i+=1
         except:
             await interaction.response.send_message(f"{element} is not available in periodic table")
+
+
+@client.tree.command(name="github")
+@app_commands.describe(repo = "Please insert the link of the repository in this format : username/repositoryname")
+async def github(interaction: discord.Integration, repo: str):
+
+    def get_repo_info(owner, repo):
+        url = f"https://api.github.com/repos/{owner}/{repo}"
+        headers = {"Accept": "application/vnd.github+json"}
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Error: {response.status_code}")
+            return None
+
+    def get_collaborators(collaborators_url):
+        response = requests.get(collaborators_url)
+        if response.status_code == 200:
+            return [collaborator["login"] for collaborator in response.json()]
+        else:
+            return []
+
+    def get_languages(languages_url):
+        response = requests.get(languages_url)
+        if response.status_code == 200:
+            return list(response.json().keys())
+        else:
+            return []
+
+    def get_open_issues(owner, repo):
+        url = f"https://api.github.com/repos/{owner}/{repo}/issues?state=open"
+        headers = {"Accept": "application/vnd.github+json"}
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Error: {response.status_code}")
+            return []
+
+    def get_repo_data(repo_url):
+        owner, repo = repo_url.split("/")[-2:]
+        repo_info = get_repo_info(owner, repo)
+
+        if repo_info:
+            data = {
+                "Github URL": repo_url,
+                "Project name": repo_info["name"],
+                "Project owner": repo_info["owner"]["login"],
+                "List users with access": get_collaborators(repo_info["collaborators_url"].split("{")[0]),  # remove template part of URL
+                "Programming languages used": get_languages(repo_info["languages_url"]),
+                "Security/visibility level": repo_info["visibility"],
+                "Description": repo_info["description"],
+                "Last maintained": repo_info["pushed_at"],
+                "Last release": repo_info["default_branch"],
+                "Open issues": get_open_issues(owner, repo),
+             
+            }
+
+
+            
+            
+
+            return data
+        else:
+            pass
+    
+    try:
+        repo_result  = get_repo_data(repo)
+
+        embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue)  
+
+        await interaction.response.send_message(embed=embed)
+
+    except:
+        await interaction.response.send_message(f"Could not find {repo}")
+
+
 
 
 client.run(TOKEN)
