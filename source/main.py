@@ -304,6 +304,7 @@ async def github(interaction: discord.Integration, repo: str):
                 "Last maintained": repo_info["pushed_at"],
                 "Last release": repo_info["default_branch"],
                 "Open issues": get_open_issues(owner, repo),
+                "avatar" : repo_info["owner"]["avatar_url"]
              
             }
 
@@ -317,9 +318,11 @@ async def github(interaction: discord.Integration, repo: str):
     
     try:
         repo_result  = get_repo_data(repo)
-
-        embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue)  
-
+        
+        embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue,url=f"https://github.com/{repo}") 
+        embed.add_field(name="Owner", value=repo_result["Project owner"]) 
+        embed.set_thumbnail(url=repo_result["avatar"])
+        print(repo_result["avatar"])
         await interaction.response.send_message(embed=embed)
 
     except:
