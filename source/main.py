@@ -297,14 +297,15 @@ async def github(interaction: discord.Integration, repo: str):
                 "Github URL": repo_url,
                 "Project name": repo_info["name"],
                 "Project owner": repo_info["owner"]["login"],
-                "List users with access": get_collaborators(repo_info["collaborators_url"].split("{")[0]),  # remove template part of URL
                 "Programming languages used": get_languages(repo_info["languages_url"]),
-                "Security/visibility level": repo_info["visibility"],
                 "Description": repo_info["description"],
                 "Last maintained": repo_info["pushed_at"],
-                "Last release": repo_info["default_branch"],
                 "Open issues": get_open_issues(owner, repo),
-                "avatar" : repo_info["owner"]["avatar_url"]
+                "Avatar" : repo_info["owner"]["avatar_url"],
+                "License": repo_info["license"]["name"],
+                "Watchers": repo_info["watchers"],
+                "Creation": repo_info["created_at"],
+
              
             }
 
@@ -316,17 +317,21 @@ async def github(interaction: discord.Integration, repo: str):
         else:
             pass
     
-    try:
-        repo_result  = get_repo_data(repo)
-        
-        embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue,url=f"https://github.com/{repo}") 
-        embed.add_field(name="Owner", value=repo_result["Project owner"]) 
-        embed.set_thumbnail(url=repo_result["avatar"])
-        print(repo_result["avatar"])
-        await interaction.response.send_message(embed=embed)
+    #try:
+    repo_result  = get_repo_data(repo)
+    
+    embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue,url=f"https://github.com/{repo}") 
+    embed.add_field(name="Owner", value=repo_result["Project owner"]) 
+    embed.add_field(name="Programming languages used", value=repo_result["Programming languages used"]) 
+    embed.add_field(name=" ",value=f"Created on {repo_result["Creation"]} and last updated on {repo_result["Last maintained"]}")
+    embed.add_field(name="Issues",value=repo_result["Open issues"])
+    embed.add_field(name="Watchers",value=repo_result["Watchers"])
+    embed.add_field(name="LICENSE", value=repo_result['License'])
+    embed.set_thumbnail(url=repo_result["Avatar"])
+    await interaction.response.send_message(embed=embed)
 
-    except:
-        await interaction.response.send_message(f"Could not find {repo}")
+"""    except:
+        await interaction.response.send_message(f"Could not find {repo}")"""
 
 
 
