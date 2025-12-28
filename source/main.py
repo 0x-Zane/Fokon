@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import random as ra
 import json
 import requests
+from datetime import datetime
 
 
 #-----------------Commands Sources-----------------
@@ -60,7 +61,7 @@ async def quizz(interaction: discord.Interaction,category:str): # will add the a
         await interaction.response.send_message(embed=embed)
         
 
-            # await interaction.response.send_message(quizz_data[category][ra.randint(0,len(quizz_data["quizz_cybersecurity"])-1)])
+            # await interaction.response.send_message(quizz_data[category][ra.randint(0,len(quizz_data["quizz_cybersecurity"])-1)]) --> DEBUG
 
     except:
         await interaction.response.send_message(f"{category} is not an available category. ")
@@ -252,7 +253,7 @@ async def periodic(interaction: discord.Interaction,element:str):
 
 @client.tree.command(name="github")
 @app_commands.describe(repo = "Please insert the link of the repository in this format : username/repositoryname")
-async def github(interaction: discord.Integration, repo: str):
+async def github(interaction: discord.Interaction, repo: str):
 
     def get_repo_info(owner, repo):
         url = f"https://api.github.com/repos/{owner}/{repo}"
@@ -302,7 +303,7 @@ async def github(interaction: discord.Integration, repo: str):
                 "Last maintained": repo_info["pushed_at"],
                 "Open issues": get_open_issues(owner, repo),
                 "Avatar" : repo_info["owner"]["avatar_url"],
-                "License": repo_info["license"]["name"],
+                "License": repo_info["license"]["name"] if repo_info["license"] else "None",
                 "Watchers": repo_info["watchers"],
                 "Creation": repo_info["created_at"],
 
@@ -319,15 +320,34 @@ async def github(interaction: discord.Integration, repo: str):
     
     try:
         repo_result  = get_repo_data(repo)
+        languages = ", ".join(repo_result["Programming languages used"]) or "Not specified"
+        issues_count = len(repo_result["Open issues"])
+
+        created_at = datetime.fromisoformat(repo_result["Creation"].replace("Z", "")).strftime("%d %B %Y")
+        updated_at = datetime.fromisoformat(repo_result["Last maintained"].replace("Z", "")).strftime("%d %B %Y")
         
-        embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue,url=f"https://github.com/{repo}") 
-        embed.add_field(name="Owner", value=repo_result["Project owner"]) 
-        embed.add_field(name="Programming languages used", value=repo_result["Programming languages used"]) 
-        embed.add_field(name=" ",value=f"Created on {repo_result["Creation"]} and last updated on {repo_result["Last maintained"]}")
-        embed.add_field(name="Issues",value=repo_result["Open issues"])
-        embed.add_field(name="Watchers",value=repo_result["Watchers"])
-        embed.add_field(name="LICENSE", value=repo_result['License'])
+        embed = discord.Embed(
+            title=f"{repo_result['Project name']}",
+            description=repo_result["Description"] or "No description provided.",
+            color=discord.Color.blue(),
+            url=f"https://github.com/{repo}"
+        )
+
         embed.set_thumbnail(url=repo_result["Avatar"])
+
+        embed.add_field(name="Owner",value=repo_result["Project owner"],inline=True)
+
+        embed.add_field(name="watchers",value=str(repo_result["Watchers"]),inline=True)
+
+        embed.add_field(name="Languages",value=languages,inline=False)
+
+        embed.add_field(name="Open issues",value=str(issues_count),inline=True)
+
+        embed.add_field(name="License",value=repo_result["License"] or "None",inline=True)
+
+        embed.add_field(name="Timeline",value=f"Created: **{created_at}**\nLast update: **{updated_at}**",inline=False)
+
+        embed.set_footer(text="Using github API")
         await interaction.response.send_message(embed=embed)
 
     except:
