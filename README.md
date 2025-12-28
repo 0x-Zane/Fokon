@@ -30,10 +30,11 @@ Current available categories:
 
 - software
 - hardware
+- electronics
 - cybersecurity
 - blockchain
 - 3dmodeling
-- webdeveloppement
+- webdevelopment
 - networking
 
 **/periodic {element}**

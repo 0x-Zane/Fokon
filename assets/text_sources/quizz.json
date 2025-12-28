@@ -15,19 +15,20 @@
     "What is the name of the file or record that stores the history of a user's actions on a system? ||Audit log or Access log||"
 ],
 "hardware" : [
-    "Which unit of measurement expresses the clock speed of a processor? ||Hertz (Hz) or Gigahertz (GHz)||" ,
-    "In an electronic circuit, which component is capable of storing an electrical charge and is measured in Farads? ||The Capacitor||",
-    "Which component is considered the basic building block of digital electronics, acting as a controlled switch? ||The Transistor|| ",
+    "Which unit of measurement expresses the clock speed of a processor? ||Hertz (Hz) or Gigahertz (GHz)||",
     "What is the role of 'RAM' (Random Access Memory) in a computer? ||To temporarily store data and programs currently being executed for the processor.||",
-    "What fundamental law relates Voltage (U), Current (I), and Resistance (R) in electronics? ||Ohm's Law ($U = R \times I$)||" ,
     "Which type of integrated circuit is at the heart of a computer and executes program instructions? ||The CPU (Central Processing Unit) or Processor||",
-    "Which serial communication bus is commonly used to connect external peripherals like mice, keyboards, and external hard drives? ||USB (Universal Serial Bus)||",
-    "What is the main function of the 'GPU' (Graphics Processing Unit)? ||To quickly process complex graphical calculations, and increasingly, parallel computations for AI or scientific calculations.||",
-    "What electronic component is used to convert Alternating Current (AC) into Direct Current (DC)? ||The Diode (specifically, in a rectifier circuit)||",
-    "Which component is necessary to ensure that the CPU remains at an acceptable temperature under load? ||The Heat Sink (and/or Fan)||",
-    "What is the difference between volatile and non-volatile memory? ||Volatile memory (like RAM) loses its data when power is removed, while non-volatile memory (like ROM, SSD) retains it.||",
-    "In electronics, what is a 'pull-up' or 'pull-down' resistor used for? ||To ensure that a digital input pin has a defined state (HIGH or LOW) when no external signal is applied.||",
-    "What is the name of the circuit board that connects all the computer components (CPU, RAM, GPU, etc.)? ||The Motherboard or Mainboard||"
+    "Which serial communication bus is commonly used to connect external peripherals? ||USB (Universal Serial Bus)||",
+    "What is the main function of the 'GPU' (Graphics Processing Unit)? ||To quickly process complex graphical calculations and parallel computations.||",
+    "Which component is necessary to ensure that the CPU remains at an acceptable temperature? ||The Heat Sink and/or Fan||",
+    "What is the difference between volatile and non-volatile memory? ||Volatile (RAM) loses data without power; non-volatile (SSD/HDD) retains it.||",
+    "What is the name of the circuit board that connects all components? ||The Motherboard||",
+    "What does 'Overclocking' mean? ||Increasing a component's clock rate beyond its factory settings to gain performance.||",
+    "What is the BIOS/UEFI? ||The firmware used to perform hardware initialization during the booting process.||",
+    "What is a 'Bus' in computer architecture? ||A communication system that transfers data between components inside a computer.||",
+    "Which type of storage is faster: HDD (Hard Disk Drive) or SSD (Solid State Drive)? ||The SSD (using flash memory).||",
+    "What is the role of the Power Supply Unit (PSU)? ||To convert mains AC to low-voltage regulated DC power for internal components.||",
+    "What is the 'Northbridge' historically responsible for? ||Communication between the CPU, RAM, and the AGP/PCIe bus.||"
 ],
 "software" : [
     "Which data structure uses the 'LIFO' (Last-In, First-Out) principle? ||The Stack||",
@@ -95,5 +96,20 @@
     "What is the term for the storage mechanism that allows a website to save small pieces of information in the user's browser? ||Cookies or Local Storage||",
     "What is the primary function of a 'version control system' (like Git) in development? ||To track and manage changes to code over time, allowing multiple developers to collaborate without conflict.||",
     "What is a 'Transpiler' (or Source-to-Source Compiler) often used for in modern web development? ||To convert code written in a newer version of a language (e.g., ES6+ JavaScript, TypeScript) into an older version that is compatible with all browsers.||"
+],
+"electronics" : [
+    "In an electronic circuit, which component stores electrical charge and is measured in Farads? ||The Capacitor||",
+    "Which component acts as a controlled switch or amplifier? ||The Transistor||",
+    "What fundamental law relates Voltage (U), Current (I), and Resistance (R)? ||Ohm's Law ($U = R \times I$)||",
+    "What component converts Alternating Current (AC) into Direct Current (DC)? ||The Diode (specifically in a bridge rectifier)||",
+    "What is a 'pull-up' resistor used for? ||To ensure a digital input stays at a HIGH state when no signal is applied.||",
+    "What is the unit of measure for electrical inductance? ||The Henry (H)||",
+    "What is the purpose of a PWM (Pulse Width Modulation) signal? ||To control the amount of power delivered to a load (like a motor or LED) by switching it ON and OFF rapidly.||",
+    "What does 'IC' stand for in electronics? ||Integrated Circuit||",
+    "What is the main difference between an analog and a digital signal? ||Analog is continuous; Digital is discrete (binary states 0 and 1).||",
+    "Which instrument is used to measure voltage, current, and resistance? ||A Multimeter||",
+    "What is the function of a Zener diode? ||To allow current to flow backwards when a specific reverse voltage is reached, often for voltage regulation.||",
+    "What is 'Breadboarding'? ||A way of prototyping electronics by plugging components into a reusable board without soldering.||",
+    "What is an 'ADC'? ||An Analog-to-Digital Converter, used to read analog sensors with a microcontroller.||"
 ]
 }
