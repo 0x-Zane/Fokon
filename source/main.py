@@ -317,21 +317,21 @@ async def github(interaction: discord.Integration, repo: str):
         else:
             pass
     
-    #try:
-    repo_result  = get_repo_data(repo)
-    
-    embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue,url=f"https://github.com/{repo}") 
-    embed.add_field(name="Owner", value=repo_result["Project owner"]) 
-    embed.add_field(name="Programming languages used", value=repo_result["Programming languages used"]) 
-    embed.add_field(name=" ",value=f"Created on {repo_result["Creation"]} and last updated on {repo_result["Last maintained"]}")
-    embed.add_field(name="Issues",value=repo_result["Open issues"])
-    embed.add_field(name="Watchers",value=repo_result["Watchers"])
-    embed.add_field(name="LICENSE", value=repo_result['License'])
-    embed.set_thumbnail(url=repo_result["Avatar"])
-    await interaction.response.send_message(embed=embed)
+    try:
+        repo_result  = get_repo_data(repo)
+        
+        embed = discord.Embed(title=repo_result["Project name"],description=repo_result["Description"],color=blue,url=f"https://github.com/{repo}") 
+        embed.add_field(name="Owner", value=repo_result["Project owner"]) 
+        embed.add_field(name="Programming languages used", value=repo_result["Programming languages used"]) 
+        embed.add_field(name=" ",value=f"Created on {repo_result["Creation"]} and last updated on {repo_result["Last maintained"]}")
+        embed.add_field(name="Issues",value=repo_result["Open issues"])
+        embed.add_field(name="Watchers",value=repo_result["Watchers"])
+        embed.add_field(name="LICENSE", value=repo_result['License'])
+        embed.set_thumbnail(url=repo_result["Avatar"])
+        await interaction.response.send_message(embed=embed)
 
-"""    except:
-        await interaction.response.send_message(f"Could not find {repo}")"""
+    except:
+        await interaction.response.send_message(f"Could not find {repo}")
 
 
 
