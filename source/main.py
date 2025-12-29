@@ -353,8 +353,14 @@ async def github(interaction: discord.Interaction, repo: str):
     except:
         await interaction.response.send_message(f"Could not find {repo}")
 
-
-
+@client.tree.command(name="resistance") 
+@app_commands.describe(v="Insert voltage here",i="Insert current here")
+async def resistance(interaction: discord.Interaction, v:float, i:float):
+    try:
+        await interaction.response.send_message(f"With V = {v}, I = {i}         -->     R = {v/i}")
+    
+    except Exception as e:
+        await interaction.response.send_message(f"Could not determine resistance, error : {e}")
 
 client.run(TOKEN)
 
