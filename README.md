@@ -100,7 +100,7 @@ GENERAL
 
 --ELECTRONICS--
 
-/Current {voltage} {resistance}
+~~/Resistance {voltage} {Current}~~
 
 /resistance_code n{color}   with n number of arguments , you input the color of the resistance in 
 the correct order and the bot will help you knowing the resistance value
