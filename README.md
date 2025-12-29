@@ -109,6 +109,3 @@ the correct order and the bot will help you knowing the resistance value
 
 ~~/periodic {element} # we take element.lower and get from a dictionnary or small db the information of the element~~
 
---GAMING--
-
-/steam track
