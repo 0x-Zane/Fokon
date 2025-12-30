@@ -362,6 +362,85 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
     except Exception as e:
         await interaction.response.send_message(f"Could not determine resistance, error : {e}")
 
+
+@client.tree.command(name="resistance_color")
+@app_commands.describe(Numer_of_Lines="Please select the number of lines on your THT Resistor (4 or 5)", color1="Insert the color of the first line",color2="Insert the color of the 2nd resistor",color3="ONLY USEFUL FOR 6 LINES RESISTORS",color4="Insert the color of the 4th line",color5="Insert the color of the 5th line")
+@app_commands.choices(
+
+    Number_of_Lines=[
+        app_commands.Choice(name="1",value=1),
+        app_commands.Choice(name="2",value=2)
+    ],
+
+    color1=[
+        app_commands.Choice(name="Black", value=0),
+        app_commands.Choice(name="Brown", value=1),
+        app_commands.Choice(name="Red", value=2),
+        app_commands.Choice(name="Orange", value=3),
+        app_commands.Choice(name="Jaune", value=4),
+        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Blue", value=6),
+        app_commands.Choice(name="Purple", value=7),
+        app_commands.Choice(name="Grey", value=8),
+        app_commands.Choice(name="White", value=9),
+    ],
+    color2=[
+        app_commands.Choice(name="Black", value=0),
+        app_commands.Choice(name="Brown", value=1),
+        app_commands.Choice(name="Red", value=2),
+        app_commands.Choice(name="Orange", value=3),
+        app_commands.Choice(name="Jaune", value=4),
+        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Blue", value=6),
+        app_commands.Choice(name="Purple", value=7),
+        app_commands.Choice(name="Grey", value=8),
+        app_commands.Choice(name="White", value=9),
+    ],
+    color3=[
+        app_commands.Choice(name="Black", value=0),
+        app_commands.Choice(name="Brown", value=1),
+        app_commands.Choice(name="Red", value=2),
+        app_commands.Choice(name="Orange", value=3),
+        app_commands.Choice(name="Jaune", value=4),
+        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Blue", value=6),
+        app_commands.Choice(name="Purple", value=7),
+        app_commands.Choice(name="Grey", value=8),
+        app_commands.Choice(name="White", value=9),
+    ],
+    color4=[
+        app_commands.Choice(name="Black", value=0),
+        app_commands.Choice(name="Brown", value=1),
+        app_commands.Choice(name="Red", value=2),
+        app_commands.Choice(name="Orange", value=3),
+        app_commands.Choice(name="Jaune", value=4),
+        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Blue", value=6),
+        app_commands.Choice(name="Purple", value=7),
+        app_commands.Choice(name="Grey", value=8),
+        app_commands.Choice(name="White", value=9),
+    ],
+    color5=[
+
+
+        app_commands.Choice(name="Black", value=0),
+        app_commands.Choice(name="Brown", value=1),
+        app_commands.Choice(name="Red", value=2),
+        app_commands.Choice(name="Orange", value=3),
+        app_commands.Choice(name="Jaune", value=4),
+        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Blue", value=6),
+        app_commands.Choice(name="Purple", value=7),
+        app_commands.Choice(name="Grey", value=8),
+        app_commands.Choice(name="White", value=9),
+        app_commands.Choice(name="Gold", value=10),
+        app_commands.Choice(name="Silver", value=11),
+    ]
+
+)
+
+async def pick(interaction: discord.Interaction, colour: int):
+    await interaction.response.send_message(f"")
 client.run(TOKEN)
 
 
