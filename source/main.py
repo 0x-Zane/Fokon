@@ -364,12 +364,12 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
 
 
 @client.tree.command(name="resistance_color")
-@app_commands.describe(Numer_of_Lines="Please select the number of lines on your THT Resistor (4 or 5)", color1="Insert the color of the first line",color2="Insert the color of the 2nd resistor",color3="ONLY USEFUL FOR 6 LINES RESISTORS",color4="Insert the color of the 4th line",color5="Insert the color of the 5th line")
+@app_commands.describe(number_of_lines="Please select the number of lines on your THT Resistor (4 or 5)", color1="Insert the color of the first line",color2="Insert the color of the 2nd resistor",color3="ONLY USEFUL FOR 6 LINES RESISTORS",color4="Insert the color of the 4th line",color5="Insert the color of the 5th line")
 @app_commands.choices(
 
-    Number_of_Lines=[
-        app_commands.Choice(name="1",value=1),
-        app_commands.Choice(name="2",value=2)
+    number_of_lines=[
+        app_commands.Choice(name="4 lines",value=0),
+        app_commands.Choice(name="5 lines",value=1)
     ],
 
     color1=[
@@ -407,6 +407,7 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="Purple", value=7),
         app_commands.Choice(name="Grey", value=8),
         app_commands.Choice(name="White", value=9),
+        app_commands.Choice(name="White", value=10),
     ],
     color4=[
         app_commands.Choice(name="Black", value=0),
@@ -423,24 +424,59 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
     color5=[
 
 
-        app_commands.Choice(name="Black", value=0),
-        app_commands.Choice(name="Brown", value=1),
-        app_commands.Choice(name="Red", value=2),
-        app_commands.Choice(name="Orange", value=3),
-        app_commands.Choice(name="Jaune", value=4),
-        app_commands.Choice(name="Vert", value=5),
-        app_commands.Choice(name="Blue", value=6),
-        app_commands.Choice(name="Purple", value=7),
-        app_commands.Choice(name="Grey", value=8),
-        app_commands.Choice(name="White", value=9),
-        app_commands.Choice(name="Gold", value=10),
-        app_commands.Choice(name="Silver", value=11),
+        app_commands.Choice(name="black", value=0),
+        app_commands.Choice(name="brown", value=1),
+        app_commands.Choice(name="red", value=2),
+        app_commands.Choice(name="orange", value=3),
+        app_commands.Choice(name="jaune", value=4),
+        app_commands.Choice(name="vert", value=5),
+        app_commands.Choice(name="blue", value=6),
+        app_commands.Choice(name="purple", value=7),
+        app_commands.Choice(name="grey", value=8),
+        app_commands.Choice(name="white", value=9),
+        app_commands.Choice(name="gold", value=10),
+        app_commands.Choice(name="silver", value=11),
     ]
 
 )
 
-async def pick(interaction: discord.Interaction, colour: int):
-    await interaction.response.send_message(f"")
+async def resistance_color(interaction: discord.Interaction,number_of_lines:int, color1: int,color2:int,color3:int,color4:int,color5:int):
+    colors= [
+    "⬛",
+    "🟫",
+    "🟥",
+    "🟧",
+    "🟨",
+    "🟩",
+    "🟦",
+    "🟪",
+    "⬜",
+    "🌫️",
+    "🟨✨",
+    "⬜✨"
+    ]
+
+    if number_of_lines == 0: #IN this case , the resistance has 4 lines
+
+        try:
+            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} ")
+        
+        except Exception as e:
+            await interaction.response.send_message(f"Error : {e}")
+
+
+    elif number_of_lines == 1: #IN this case , the resistance has 5 lines    
+        pass
+
+    else:
+        await interaction.response.send_message("The number of lines is incorrect")
+
+"""
+    if number_of_lines: app_commands.Choice[]:
+        await interaction.response.send_message(f"THe color lines of your resistance is {}")
+    
+    elif Number_of_lines: Choice[value]:
+        await interaction.response.send_message(f"THe color lines of your resistance is {}")"""
 client.run(TOKEN)
 
 
