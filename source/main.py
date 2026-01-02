@@ -15,9 +15,9 @@ blue = discord.Color.blue()
 yellow = discord.Color.yellow()
 #------------------Loading Json data------------------
 
-with open('assets/text_sources/quizz.json', 'r',encoding="utf-8") as quizzes:
+with open('Fokon/assets/text_sources/quizz.json', 'r',encoding="utf-8") as quizzes:
     quizz_data = json.load(quizzes)
-with open('assets/text_sources/periodic.json', 'r',encoding="utf-8") as periodic:
+with open('Fokon/assets/text_sources/periodic.json', 'r',encoding="utf-8") as periodic:
     periodic_data = json.load(periodic)
 
 
@@ -368,8 +368,8 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
 @app_commands.choices(
 
     number_of_lines=[
-        app_commands.Choice(name="4 lines",value=0),
-        app_commands.Choice(name="5 lines",value=1)
+        app_commands.Choice(name="4 lines",value=4),
+        app_commands.Choice(name="5 lines",value=5)
     ],
 
     color1=[
@@ -456,7 +456,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
     "⬜✨"
     ]
 
-    if number_of_lines == 0: #IN this case , the resistance has 4 lines
+    if number_of_lines == 4: #IN this case , the resistance has 4 lines
 
         try:
             await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} ")
@@ -465,18 +465,17 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
             await interaction.response.send_message(f"Error : {e}")
 
 
-    elif number_of_lines == 1: #IN this case , the resistance has 5 lines    
-        pass
+    elif number_of_lines == 5: #IN this case , the resistance has 5 lines    
+        try:
+            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color3]}{colors[color4]}{colors[color5]} ")
+        
+        except Exception as e:
+            await interaction.response.send_message(f"Error : {e}")
 
     else:
         await interaction.response.send_message("The number of lines is incorrect")
 
-"""
-    if number_of_lines: app_commands.Choice[]:
-        await interaction.response.send_message(f"THe color lines of your resistance is {}")
-    
-    elif Number_of_lines: Choice[value]:
-        await interaction.response.send_message(f"THe color lines of your resistance is {}")"""
+
 client.run(TOKEN)
 
 
