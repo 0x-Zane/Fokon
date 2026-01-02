@@ -454,7 +454,19 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
     "🟨✨",
     "⬜✨"
     ]
-
+    uncertainties= [
+        None,
+        1.00,
+        2.00,
+        None,
+        None,
+        0.50,
+        0.25,
+        0.10,
+        0.05,
+        5.00,
+        10.0,
+        ]
 
 
     if number_of_lines == 4: #IN this case , the resistance has 4 lines
@@ -462,7 +474,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
         try:
             digits = int(str(color1)+str(color2))
             factor = 10**color4
-            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms .")
+            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms with an uncertainty of {uncertainties[color5]}ohms .")
         
         except Exception as e:
             await interaction.response.send_message(f"Error : {e}")
@@ -472,7 +484,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
         try:
             digits = int(str(color1)+str(color2)+str(color3))
             factor = 10**color4
-            await interaction.response.send_message(f"Resistance selected : {colors[color1]}{colors[color2]}{colors[color3]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms .")
+            await interaction.response.send_message(f"Resistance selected : {colors[color1]}{colors[color2]}{colors[color3]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms with an uncertainty of {uncertainties[color5]}ohms .")
 
             
 
