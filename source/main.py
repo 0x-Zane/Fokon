@@ -407,7 +407,6 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="Purple", value=7),
         app_commands.Choice(name="Grey", value=8),
         app_commands.Choice(name="White", value=9),
-        app_commands.Choice(name="White", value=10),
     ],
     color4=[
         app_commands.Choice(name="Black", value=0),
@@ -456,10 +455,14 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
     "⬜✨"
     ]
 
+
+
     if number_of_lines == 4: #IN this case , the resistance has 4 lines
 
         try:
-            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} ")
+            digits = int(str(color1)+str(color2))
+            factor = 10**color4
+            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms .")
         
         except Exception as e:
             await interaction.response.send_message(f"Error : {e}")
@@ -467,7 +470,12 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
 
     elif number_of_lines == 5: #IN this case , the resistance has 5 lines    
         try:
-            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color3]}{colors[color4]}{colors[color5]} ")
+            digits = int(str(color1)+str(color2)+str(color3))
+            factor = 10**color4
+            await interaction.response.send_message(f"Resistance selected : {colors[color1]}{colors[color2]}{colors[color3]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms .")
+
+            
+
         
         except Exception as e:
             await interaction.response.send_message(f"Error : {e}")
