@@ -45,6 +45,11 @@ element argument can be :
 
 **/nohello**
 
+**/resistance {voltage} {current}**
+Returns the resistance needed for a given voltage and current.
+
+**/resistance_color {number_of_lines}  {color1} {color2}  {color3}  {color4}  {color5}**
+Translate a resistor color code with the value of the resistance
 
 **/random {minimum} {maximum}**
 
@@ -86,7 +91,6 @@ The code to display github repository informations is inspired by Rachelle Palme
 GENERAL 
 
 
-/poll {message} n{option(n)} #Creates a poll with n custom options
 
 ~~/random {x} {y}  #Generates a random number between x and y ~~
 
@@ -102,8 +106,8 @@ GENERAL
 
 ~~/Resistance {voltage} {Current}~~
 
-/resistance_code n{color}   with n number of arguments , you input the color of the resistance in 
-the correct order and the bot will help you knowing the resistance value
+~~/resistance_code n{color}   with n number of arguments , you input the color of the resistance in ~~
+~~the correct order and the bot will help you knowing the resistance value~~
 
 --SCIENCE--
 
