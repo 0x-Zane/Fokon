@@ -364,7 +364,7 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
 
 
 @client.tree.command(name="resistance_color")
-@app_commands.describe(number_of_lines="Please select the number of lines on your THT Resistor (4 or 5)", color1="Insert the color of the first line",color2="Insert the color of the 2nd resistor",color3="ONLY USEFUL FOR 6 LINES RESISTORS",color4="Insert the color of the 4th line",color5="Insert the color of the 5th line")
+@app_commands.describe(number_of_lines="Please select the number of lines on your THT Resistor (4 or 5)", color1="Insert the color of the first line",color2="Insert the color of the 2nd resistor",color3="ONLY USEFUL FOR 5 LINES RESISTORS",color4="Insert the color of the 4th line",color5="Insert the color of the 5th line")
 @app_commands.choices(
 
     number_of_lines=[
@@ -377,8 +377,8 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="Brown", value=1),
         app_commands.Choice(name="Red", value=2),
         app_commands.Choice(name="Orange", value=3),
-        app_commands.Choice(name="Jaune", value=4),
-        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Yellow", value=4),
+        app_commands.Choice(name="Green", value=5),
         app_commands.Choice(name="Blue", value=6),
         app_commands.Choice(name="Purple", value=7),
         app_commands.Choice(name="Grey", value=8),
@@ -389,8 +389,8 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="Brown", value=1),
         app_commands.Choice(name="Red", value=2),
         app_commands.Choice(name="Orange", value=3),
-        app_commands.Choice(name="Jaune", value=4),
-        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Yellow", value=4),
+        app_commands.Choice(name="Green", value=5),
         app_commands.Choice(name="Blue", value=6),
         app_commands.Choice(name="Purple", value=7),
         app_commands.Choice(name="Grey", value=8),
@@ -401,8 +401,8 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="Brown", value=1),
         app_commands.Choice(name="Red", value=2),
         app_commands.Choice(name="Orange", value=3),
-        app_commands.Choice(name="Jaune", value=4),
-        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Yellow", value=4),
+        app_commands.Choice(name="Green", value=5),
         app_commands.Choice(name="Blue", value=6),
         app_commands.Choice(name="Purple", value=7),
         app_commands.Choice(name="Grey", value=8),
@@ -413,8 +413,8 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="Brown", value=1),
         app_commands.Choice(name="Red", value=2),
         app_commands.Choice(name="Orange", value=3),
-        app_commands.Choice(name="Jaune", value=4),
-        app_commands.Choice(name="Vert", value=5),
+        app_commands.Choice(name="Yellow", value=4),
+        app_commands.Choice(name="Green", value=5),
         app_commands.Choice(name="Blue", value=6),
         app_commands.Choice(name="Purple", value=7),
         app_commands.Choice(name="Grey", value=8),
@@ -427,8 +427,8 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="brown", value=1),
         app_commands.Choice(name="red", value=2),
         app_commands.Choice(name="orange", value=3),
-        app_commands.Choice(name="jaune", value=4),
-        app_commands.Choice(name="vert", value=5),
+        app_commands.Choice(name="yellow", value=4),
+        app_commands.Choice(name="green", value=5),
         app_commands.Choice(name="blue", value=6),
         app_commands.Choice(name="purple", value=7),
         app_commands.Choice(name="grey", value=8),
@@ -474,7 +474,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
         try:
             digits = int(str(color1)+str(color2))
             factor = 10**color4
-            await interaction.response.send_message(f"Resistance selected : {colors[color1]} {colors[color2]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms with a tolerance of {tolerances[color5]}% .")
+            await interaction.response.send_message(f"Resistance selected : |{colors[color1]}|{colors[color2]}|{colors[color4]}|{colors[color5]}| , with a value of {digits * factor} ohms with a tolerance of {tolerances[color5]}% .")
         
         except Exception as e:
             await interaction.response.send_message(f"Error : {e}")
@@ -484,7 +484,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
         try:
             digits = int(str(color1)+str(color2)+str(color3))
             factor = 10**color4
-            await interaction.response.send_message(f"Resistance selected : {colors[color1]}{colors[color2]}{colors[color3]}{colors[color4]}{colors[color5]} , with a value of {digits * factor} ohms with a tolerance of {tolerances[color5]}% .")
+            await interaction.response.send_message(f"Resistance selected : |{colors[color1]}|{colors[color2]}|{colors[color3]}|{colors[color4]}|{colors[color5]}| , with a value of {digits * factor} ohms with a tolerance of {tolerances[color5]}% .")
 
             
 
