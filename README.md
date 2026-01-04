@@ -90,13 +90,14 @@ The code to display github repository informations is inspired by Rachelle Palme
 
 GENERAL 
 
-
+COOLDOWN FOR COMMANDS
 
 ~~/random {x} {y}  #Generates a random number between x and y ~~
 
 ~~/github {repository_link} #Get the informations of a repository~~
 
 ~~/quizz #Get a random developper question to answer~~
+Update: Having choices instead of writing by hand
 
 ~~/nohello #Sends the nohello.net link~~
 
