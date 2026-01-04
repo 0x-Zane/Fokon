@@ -97,7 +97,7 @@ COOLDOWN FOR COMMANDS
 ~~/github {repository_link} #Get the informations of a repository~~
 
 ~~/quizz #Get a random developper question to answer~~
-Update: Having choices instead of writing by hand
+~~Update: Having choices instead of writing by hand~~
 
 ~~/nohello #Sends the nohello.net link~~
 

@@ -52,6 +52,17 @@ async def  on_ready():
 
 @client.tree.command(name = "quizz")
 @app_commands.describe(category = "Choose a category".lower())
+@app_commands.choices( category=[
+    
+    app_commands.Choice(name="cybersecurity",value="cybersecurity"),
+    app_commands.Choice(name="hardware",value="hardware"),
+    app_commands.Choice(name="software",value="software"),
+    app_commands.Choice(name="networking",value="networking"),
+    app_commands.Choice(name="3dmodeling",value="3dmodeling"),
+    app_commands.Choice(name="webdevelopment",value="webdevelopment"),
+    app_commands.Choice(name="electronics",value="electronics"),
+
+                                 ])
 async def quizz(interaction: discord.Interaction,category:str): # will add the argument to get a quizz from a certain niche
     try:
         embed = discord.Embed(title=category.upper(),description="",color=yellow,url=f'https://en.wikipedia.org/wiki/{category}')  
