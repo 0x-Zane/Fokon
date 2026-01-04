@@ -263,6 +263,7 @@ async def periodic(interaction: discord.Interaction,element:str):
 
 
 @client.tree.command(name="github")
+@app_commands.checks.cooldown(1, 5.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(repo = "Please insert the link of the repository in this format : username/repositoryname")
 async def github(interaction: discord.Interaction, repo: str):
 
@@ -363,6 +364,13 @@ async def github(interaction: discord.Interaction, repo: str):
 
     except:
         await interaction.response.send_message(f"Could not find {repo}")
+
+@github.error
+async def on_github_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
 
 @client.tree.command(name="resistance") 
 @app_commands.describe(v="Insert voltage here",i="Insert current here")
