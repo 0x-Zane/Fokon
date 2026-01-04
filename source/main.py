@@ -48,6 +48,9 @@ async def  on_ready():
     except Exception as e:
         print(e)
 
+@client.tree.command(name="info")
+async def info(interaction : discord.Interaction):
+    await interaction.response.send_message("GET ALL THE INFORMATIONS [HERE](https://github.com/0Zane/Fokon/blob/main/README.md)")
 
 
 @client.tree.command(name = "quizz")
