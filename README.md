@@ -61,7 +61,7 @@ repo argument needs to be in this format ``username/repositoryname``
 ## TECH & STACK
 
 
-![](https://img.shields.io/badge/Language-Python-blue)    ![](https://img.shields.io/badge/Library-discord.py-blue)
+![](https://img.shields.io/badge/Python-3.14.2-blue)    ![](https://img.shields.io/badge/Library-discord.py-blue)
 
 
 
@@ -100,7 +100,6 @@ GENERAL
 
 ~~/nohello #Sends the nohello.net link~~
 
-/sleep_calculator {wake_up} {wanted_cycle(default:190min)}  # returns the next best sleep hours
 
 --ELECTRONICS--
 
