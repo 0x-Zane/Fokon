@@ -263,7 +263,7 @@ async def periodic(interaction: discord.Interaction,element:str):
 
 
 @client.tree.command(name="github")
-@app_commands.checks.cooldown(1, 5.0, key=lambda i: (i.guild_id, i.user.id))
+@app_commands.checks.cooldown(1, 15.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(repo = "Please insert the link of the repository in this format : username/repositoryname")
 async def github(interaction: discord.Interaction, repo: str):
 
