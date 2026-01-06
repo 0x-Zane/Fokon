@@ -93,7 +93,13 @@ async def dontasktoask(interaction : discord.Interaction):
 @client.tree.command(name = "random")
 @app_commands.describe(min = "Choose a minimum number", max  = "Choose a maximum number")
 async def random(interaction: discord.Interaction,min:int,max:int):
-    await interaction.response.send_message(ra.randint(min,max))
+    if max > min:
+        try:
+            await interaction.response.send_message(ra.randint(min,max))
+        except:
+            await interaction.response.send_message(f"Fokon cannot generate a random number between {min} and {max}")
+    else:
+        await interaction.response.send_message(f"Min argument needs to be superior to Max argument, please try with valid values.")
 
 
 @client.tree.command(name = "periodic")
