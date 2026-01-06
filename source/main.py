@@ -502,8 +502,17 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
         try:
             digits = int(str(color1)+str(color2))
             factor = 10**color4
-            await interaction.response.send_message(f"Resistance selected : |{colors[color1]}|{colors[color2]}|{colors[color4]}|{colors[color5]}| , with a value of {digits * factor} ohms with a tolerance of {tolerances[color5]}% .")
-        
+            embed = discord.Embed(
+                title = f"Resistance selected : |{colors[color1]}|{colors[color2]}|{colors[color4]}|{colors[color5]}|",
+                description = "" ,
+                color=discord.Color.yellow(),
+                )
+            embed.add_field(name="Resistance value : ", value= {digits*factor})
+            embed.add_field(name="Tolerance : ", value= f"{tolerances[color5]}%" if tolerances[color5] else "not defined")
+
+            await interaction.response.send_message(embed=embed)
+
+
         except Exception as e:
             await interaction.response.send_message(f"Error : {e}")
 
@@ -512,7 +521,15 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
         try:
             digits = int(str(color1)+str(color2)+str(color3))
             factor = 10**color4
-            await interaction.response.send_message(f"Resistance selected : |{colors[color1]}|{colors[color2]}|{colors[color3]}|{colors[color4]}|{colors[color5]}| , with a value of {digits * factor} ohms with a tolerance of {tolerances[color5]}% .")
+            embed = discord.Embed(
+                title = f"Resistance selected : |{colors[color1]}|{colors[color2]}|{colors[color3]}|{colors[color4]}|{colors[color5]}|",
+                description = "" ,
+                color=discord.Color.yellow(),
+                )
+            embed.add_field(name="Resistance value : ", value= {digits*factor})
+            embed.add_field(name="Tolerance : ", value= f"{tolerances[color5]}%" if tolerances[color5] else "not defined")
+
+            await interaction.response.send_message(embed=embed)
 
             
 
