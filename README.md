@@ -92,7 +92,7 @@ GENERAL
 
 COOLDOWN FOR COMMANDS
 
-~~/random {x} {y}  #Generates a random number between x and y ~~
+~~/random {x} {y}  #Generates a random number between x and y~~
 
 ~~/github {repository_link} #Get the informations of a repository~~
 
@@ -106,7 +106,7 @@ COOLDOWN FOR COMMANDS
 
 ~~/Resistance {voltage} {Current}~~
 
-~~/resistance_code n{color}   with n number of arguments , you input the color of the resistance in ~~
+~~/resistance_code n{color}   with n number of arguments , you input the color of the resistance in~~
 ~~the correct order and the bot will help you knowing the resistance value~~
 
 --SCIENCE--
