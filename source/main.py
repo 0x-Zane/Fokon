@@ -15,9 +15,9 @@ blue = discord.Color.blue()
 yellow = discord.Color.yellow()
 #------------------Loading Json data------------------
 
-with open('Fokon/assets/text_sources/quizz.json', 'r',encoding="utf-8") as quizzes:
+with open('assets/text_sources/quizz.json', 'r',encoding="utf-8") as quizzes:
     quizz_data = json.load(quizzes)
-with open('Fokon/assets/text_sources/periodic.json', 'r',encoding="utf-8") as periodic:
+with open('assets/text_sources/periodic.json', 'r',encoding="utf-8") as periodic:
     periodic_data = json.load(periodic)
 
 
