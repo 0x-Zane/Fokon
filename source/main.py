@@ -425,6 +425,7 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
         app_commands.Choice(name="White", value=9),
     ],
     color3=[
+        app_commands.Choice(name="CHOOSE THIS IF YOU HAVE 4 LINES RESISTOR", value=67),
         app_commands.Choice(name="Black", value=0),
         app_commands.Choice(name="Brown", value=1),
         app_commands.Choice(name="Red", value=2),
@@ -507,7 +508,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
                 description = "" ,
                 color=discord.Color.yellow(),
                 )
-            embed.add_field(name="Resistance value : ", value= {digits*factor})
+            embed.add_field(name="Resistance value : ", value= f"{digits*factor} ohms")
             embed.add_field(name="Tolerance : ", value= f"{tolerances[color5]}%" if tolerances[color5] else "not defined")
 
             await interaction.response.send_message(embed=embed)
@@ -526,7 +527,7 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
                 description = "" ,
                 color=discord.Color.yellow(),
                 )
-            embed.add_field(name="Resistance value : ", value= {digits*factor})
+            embed.add_field(name="Resistance value : ", value= f"{digits*factor} ohms")
             embed.add_field(name="Tolerance : ", value= f"{tolerances[color5]}%" if tolerances[color5] else "not defined")
 
             await interaction.response.send_message(embed=embed)
