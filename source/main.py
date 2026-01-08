@@ -541,9 +541,9 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
     else:
         await interaction.response.send_message("The number of lines is incorrect")
 
-@client.tree.command(name="whois_website")
+@client.tree.command(name="whois")
 @app_commands.describe(website= "Enter url of the website to analyse, ex: example.com")
-async def whois_website(interaction: discord.Interaction, website:str):
+async def whois_command(interaction: discord.Interaction, website:str):
     await interaction.response.send_message(whois.whois(website))
 
 client.run(TOKEN)
