@@ -1,3 +1,4 @@
 discord.py
 python-dotenv
 requests
+python-whois

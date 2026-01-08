@@ -7,7 +7,7 @@ import random as ra
 import json
 import requests
 from datetime import datetime
-
+import whois
 
 #-----------------Commands Sources-----------------
 red = discord.Color.red()
@@ -541,6 +541,10 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
     else:
         await interaction.response.send_message("The number of lines is incorrect")
 
+@client.tree.command(name="whois_website")
+@app_commands.describe(website= "Enter url of the website to analyse, ex: example.com")
+async def whois_website(interaction: discord.Interaction, website:str):
+    await interaction.response.send_message(whois.whois(website))
 
 client.run(TOKEN)
 
