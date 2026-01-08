@@ -356,6 +356,8 @@ async def github(interaction: discord.Interaction, repo: str):
 
         embed.set_thumbnail(url=repo_result["Avatar"])
 
+        embed.add_field(name="Repository",value=f"[{repo}](https://github.com/{repo})",inline=False)
+
         embed.add_field(name="Owner",value=repo_result["Project owner"],inline=True)
 
         embed.add_field(name="watchers",value=str(repo_result["Watchers"]),inline=True)
