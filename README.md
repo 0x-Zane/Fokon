@@ -101,6 +101,7 @@ COOLDOWN FOR COMMANDS
 
 ~~/nohello #Sends the nohello.net link~~
 
+/ocr {image}
 
 --ELECTRONICS--
 
@@ -112,4 +113,12 @@ COOLDOWN FOR COMMANDS
 --SCIENCE--
 
 ~~/periodic {element} # we take element.lower and get from a dictionnary or small db the information of the element~~
+
+--LOW LEVEL--
+
+/base_convert {nu} {from} {to}
+
+--CYBERSECURITY--
+
+/whois {website}
 
