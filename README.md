@@ -1,124 +1,192 @@
 ![image alt](https://github.com/0x-Zane/Fokon/blob/7eaa9e36eeabff5597c3f842cb1eb0a59a60eea8/assets/banner_fokon.png)
 
-# FOKON 
+# FOKON
 
-Fokon is a discord bot created in python during the 2025 discord buildathon with a view to help developpers, science amateurs, gamers and all type of people interested in computers and general science in their daily tasks or to learn more and train their skills.
+[![Python](https://img.shields.io/badge/Python-3.14.2-blue.svg)](https://www.python.org/)
+[![discord.py](https://img.shields.io/badge/discord.py-latest-blue.svg)](https://discordpy.readthedocs.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Discord Buildathon 2025](https://img.shields.io/badge/Discord-Buildathon%202025-5865F2.svg)](https://discord.com/)
 
-The bot supports slash commands with a bunch of categories of commands that we'll explore later on this page.
+Fokon is an open source Discord bot created in Python for the Discord Buildathon 2025. The project aims to provide useful tools for developers, science enthusiasts, and people interested in computer science and general sciences, whether for their daily tasks or for learning purposes.
 
-⚠️THE PROJECT IS IN DEV, MANY FEATURES AREN'T COMPLETED . IF YOU WANT TO CONTRIBUTE SCROLL TO CONTRIBUTE CATEGORY DOWN THE PAGE ⚠️
+## Table of Contents
 
+- [FOKON](#fokon)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Features](#features)
+  - [Commands](#commands)
+    - [Quiz](#quiz)
+    - [Science](#science)
+    - [Electronics](#electronics)
+    - [Utilities](#utilities)
+  - [Project Structure](#project-structure)
+  - [Tech Stack](#tech-stack)
+  - [Contributing](#contributing)
+    - [How to Contribute](#how-to-contribute)
+    - [Contribution Areas](#contribution-areas)
+    - [Code Guidelines](#code-guidelines)
+  - [Roadmap](#roadmap)
+    - [General Improvements](#general-improvements)
+    - [Commands to Implement](#commands-to-implement)
+    - [Implemented Commands](#implemented-commands)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
 
+## About
 
+Fokon is a modular Discord bot that offers a collection of slash commands organized by categories. The project is actively developed and open to community contributions. The goal is to create a versatile tool that combines practical utilities and educational content.
 
-## PREVIEW
+The bot uses the modern Discord API with slash commands and supports different categories of features ranging from educational quizzes to electronic calculation tools.
 
-Coming soon...
+## Features
 
+**Educational Quizzes**
 
----
+Quiz system covering eight different domains: software, hardware, electronics, cybersecurity, blockchain, 3dmodeling, webdevelopment, networking. Each category contains questions with answers for learning and practice.
 
+**Periodic Table**
 
+Complete access to information on all 118 elements of the periodic table. Search by symbol, name, or atomic number with display of physical and chemical properties.
 
-## COMMANDS
+**Electronic Tools**
 
-### General purpose
+Electrical resistance calculations and resistor color code decoding (4 and 5 bands). Useful for electronics projects and learning.
 
-**/quizz {category}**
+**Utilities**
 
-Current available categories:
+Random number generator, GitHub repository information retrieval, and links to online communication resources.
 
-- software
-- hardware
-- electronics
-- cybersecurity
-- blockchain
-- 3dmodeling
-- webdevelopment
-- networking
+## Commands
 
-**/periodic {element}**
-element argument can be :
--symbol
--element name
--atomic number
+### Quiz
 
-**/nohello**
+`/quizz {category}` - Generates a random question in the specified category.
 
-**/resistance {voltage} {current}**
-Returns the resistance needed for a given voltage and current.
+Available categories: `cybersecurity`, `hardware`, `software`, `networking`, `3dmodeling`, `webdevelopment`, `electronics`, `blockchain`.
 
-**/resistance_color {number_of_lines}  {color1} {color2}  {color3}  {color4}  {color5}**
-Translate a resistor color code with the value of the resistance
+### Science
 
-**/random {minimum} {maximum}**
+`/periodic {element}` - Displays detailed information about a periodic table element.
 
-**/github {repo}**
-repo argument needs to be in this format ``username/repositoryname``
+The argument can be the symbol (e.g., "H"), the name (e.g., "Hydrogen"), or the atomic number (e.g., "1").
 
----
+### Electronics
 
-## TECH & STACK
+`/resistance {voltage} {current}` - Calculates the required resistance for a given voltage and current according to Ohm's law.
 
+`/resistance_color {number_of_lines} {color1} {color2} {color3} {color4} {color5}` - Decodes a resistor color code and displays its value in ohms as well as its tolerance.
 
-![](https://img.shields.io/badge/Python-3.14.2-blue)    ![](https://img.shields.io/badge/Library-discord.py-blue)
+### Utilities
 
+`/random {minimum} {maximum}` - Generates a random number between two values.
 
+`/github {repo}` - Retrieves and displays information about a GitHub repository. Expected format: `username/repositoryname`.
 
-Here is the [Discord.py documentation](https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.Context)
+`/nohello` - Displays a link to nohello.net.
 
+`/dontasktoask` - Displays a link to dontasktoask.com.
 
+`/info` - Displays a link to this README.
 
-## CONTRIBUTION
+## Project Structure
 
-First of all , thanks for considering this part of the README , contributions are more than welcome!
-Where to contribute?
-There is 3 main zones on this repo that could need ameliorations:
--The code itself , if you have better ways to proceed a command
--The issues , if issues are declared for the repo i would love to see your solutions
--Verification of information, as you can see  the json files contains knowledge (periodic table + quizzes) **THESE ARE MOSTLY GENERATED BY AI** so if you see any errors in the informations do not hesitate to fork the repo and modify the wrong parts.
+```
+Fokon/
+├── source/
+│   └── main.py              # Main bot code
+├── assets/
+│   ├── images/              # Images and banners
+│   └── text_sources/        # JSON data
+│       ├── periodic.json    # Periodic table data
+│       └── quizz.json       # Quiz questions by category
+├── requirements.txt         # Python dependencies
+├── LICENSE                  # MIT License
+└── README.md               # Documentation
+```
 
-### Credits
+## Tech Stack
 
-Thanks to the community of [Discord developpers](https://discord.gg/discord-developers) for supporting the project and providing good ideas and inspirations.
+- **Python 3.14.2** - Programming language
+- **discord.py** - Library for Discord API
+- **requests** - HTTP requests for external APIs
+- **python-dotenv** - Environment variable management
 
-The code to display github repository informations is inspired by Rachelle Palmer from her [Post](https://dev.to/techbelle/how-to-retrieve-github-repository-data-using-python-59g3) on dev.io
+discord.py documentation: [discordpy.readthedocs.io](https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.Context)
 
+## Contributing
 
+Contributions are essential to the project's development. Several areas for improvement are available.
 
-## TO-DO 
+### How to Contribute
 
-GENERAL 
+1. Fork the repository
+2. Create a branch for your modification (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'Add a new feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a Pull Request
 
-COOLDOWN FOR COMMANDS
+### Contribution Areas
 
-~~/random {x} {y}  #Generates a random number between x and y~~
+**Code Improvement**
 
-~~/github {repository_link} #Get the informations of a repository~~
+The code can be optimized and improved. If you identify bugs, duplicated code, optimization opportunities, or performance issues, feel free to propose your modifications.
 
-~~/quizz #Get a random developper question to answer~~
-~~Update: Having choices instead of writing by hand~~
+**Data Verification**
 
-~~/nohello #Sends the nohello.net link~~
+The JSON files in `assets/text_sources/` contain periodic table data and quiz questions. This data was largely generated by AI and may contain errors. Any correction is appreciated.
 
-/ocr {image}
+**New Features**
 
---ELECTRONICS--
+Several commands are planned but not yet implemented (see Roadmap section). Proposals for new features are also welcome. Discuss them first in an issue to validate the approach.
 
-~~/Resistance {voltage} {Current}~~
+**Issue Resolution**
 
-~~/resistance_code n{color}   with n number of arguments , you input the color of the resistance in~~
-~~the correct order and the bot will help you knowing the resistance value~~
+If issues are open on the repository and you have a solution, feel free to contribute. Make sure to read existing comments before starting.
 
---SCIENCE--
+**Documentation**
 
-~~/periodic {element} # we take element.lower and get from a dictionnary or small db the information of the element~~
+Improving documentation, whether in the README or in code comments, is always appreciated.
 
---LOW LEVEL--
+### Code Guidelines
 
-/base_convert {nu} {from} {to}
+- Respect the existing code style
+- Add comments for complex parts
+- Test your modifications before submitting a PR
+- Ensure the code works without errors
 
---CYBERSECURITY--
+## Roadmap
 
-/whois {website}
+### General Improvements
 
+- [ ] Add cooldowns to all commands (currently only on `/github`)
+- [ ] Improve error handling
+- [ ] Optimize searches in JSON data
+- [ ] Refactor duplicated code
+
+### Commands to Implement
+
+- [ ] `/ocr {image}` - Extract text from an image
+- [ ] `/base_convert {number} {from} {to}` - Convert a number from one base to another
+- [ ] `/whois {website}` - Retrieve information about a domain
+
+### Implemented Commands
+
+- [x] `/random` - Random number generator
+- [x] `/github` - GitHub repository information
+- [x] `/quizz` - Quiz system with category selection
+- [x] `/nohello` - Link to nohello.net
+- [x] `/dontasktoask` - Link to dontasktoask.com
+- [x] `/resistance` - Electrical resistance calculation
+- [x] `/resistance_color` - Resistor color code decoding
+- [x] `/periodic` - Periodic table lookup
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Acknowledgments
+
+Thanks to the [Discord Developers](https://discord.gg/discord-developers) community for the support and ideas brought to the project.
+
+The code for displaying GitHub repository information is inspired by an article by Rachelle Palmer on [dev.to](https://dev.to/techbelle/how-to-retrieve-github-repository-data-using-python-59g3).
