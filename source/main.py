@@ -54,6 +54,7 @@ async def info(interaction : discord.Interaction):
 
 
 @client.tree.command(name = "quizz")
+@app_commands.checks.cooldown(1, 5.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(category = "Choose a category".lower())
 @app_commands.choices( category=[
     
@@ -79,18 +80,40 @@ async def quizz(interaction: discord.Interaction,category:str): # will add the a
 
     except:
         await interaction.response.send_message(f"{category} is not an available category. ")
-        
+@quizz.error
+async def on_quizz_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
+
+
 @client.tree.command(name="nohello")
+@app_commands.checks.cooldown(1, 2.0, key=lambda i: (i.guild_id, i.user.id))
+
 async def nohello(interaction : discord.Interaction):
     await interaction.response.send_message("https://nohello.net/en/")
+@nohello.error
+async def on_nohello_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
 
 
 @client.tree.command(name="dontasktoask")
+@app_commands.checks.cooldown(1, 2.0, key=lambda i: (i.guild_id, i.user.id))
 async def dontasktoask(interaction : discord.Interaction):
     await interaction.response.send_message("https://dontasktoask.com")
+@dontasktoask.error
+async def on_dontasktoask_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
 
 
 @client.tree.command(name = "random")
+@app_commands.checks.cooldown(1, 2.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(min = "Choose a minimum number", max  = "Choose a maximum number")
 async def random(interaction: discord.Interaction,min:int,max:int):
     if max > min:
@@ -100,9 +123,16 @@ async def random(interaction: discord.Interaction,min:int,max:int):
             await interaction.response.send_message(f"Fokon cannot generate a random number between {min} and {max}")
     else:
         await interaction.response.send_message(f"Min argument needs to be superior to Max argument, please try with valid values.")
+@random.error
+async def on_random_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
 
 
 @client.tree.command(name = "periodic")
+@app_commands.checks.cooldown(1, 8.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(element = "Please provide the atomic number/symbol/name of the wanted element.")
 async def periodic(interaction: discord.Interaction,element:str):
 
@@ -269,6 +299,12 @@ async def periodic(interaction: discord.Interaction,element:str):
                     i+=1
         except:
             await interaction.response.send_message(f"{element} is not available in periodic table")
+@periodic.error
+async def on_periodic_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
 
 
 @client.tree.command(name="github")
@@ -382,6 +418,7 @@ async def on_github_error(interaction: discord.Interaction, error: app_commands.
 
 
 @client.tree.command(name="resistance") 
+@app_commands.checks.cooldown(1, 4.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(v="Insert voltage here",i="Insert current here")
 async def resistance(interaction: discord.Interaction, v:float, i:float):
     try:
@@ -389,9 +426,16 @@ async def resistance(interaction: discord.Interaction, v:float, i:float):
     
     except Exception as e:
         await interaction.response.send_message(f"Could not determine resistance, error : {e}")
+@resistance.error
+async def on_resistance_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
 
 
 @client.tree.command(name="resistance_color")
+@app_commands.checks.cooldown(1, 6.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(number_of_lines="Please select the number of lines on your THT Resistor (4 or 5)", color1="Insert the color of the first line",color2="Insert the color of the 2nd resistor",color3="ONLY USEFUL FOR 5 LINES RESISTORS",color4="Insert the color of the 4th line",color5="Insert the color of the 5th line")
 @app_commands.choices(
 
@@ -540,11 +584,27 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
 
     else:
         await interaction.response.send_message("The number of lines is incorrect")
+@resistance_color.error
+async def on_resistance_color_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
+
 
 @client.tree.command(name="whois")
+@app_commands.checks.cooldown(1, 10.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(website= "Enter url of the website to analyse, ex: example.com")
 async def whois_command(interaction: discord.Interaction, website:str):
-    await interaction.response.send_message((whois.whois(website)).text)
+    await interaction.response.send_message((whois.whois(website)))
+
+@whois_command.error
+async def on_whois_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
+
+
+
 
 @client.tree.command(name ="convert")
 @app_commands.describe(value_to_convert="Enter the value that you want to convert here",initial_base="Initial base",target_base="Target base")
@@ -562,7 +622,6 @@ async def whois_command(interaction: discord.Interaction, website:str):
         app_commands.Choice( name = "Decimal/base10", value = 10),
         app_commands.Choice( name = "Hexadecimal/base16", value = 16)],
 )
-
                     
 async def convert(interaction: discord.Interaction, value_to_convert: str, initial_base: int, target_base: int):
     try:
@@ -595,8 +654,11 @@ async def convert(interaction: discord.Interaction, value_to_convert: str, initi
         )
     except Exception as e:
         await interaction.response.send_message(f"Error  : {e}", ephemeral=True)
-
-
+@app_commands.checks.cooldown(1, 10.0, key=lambda i: (i.guild_id, i.user.id))
+@convert.error
+async def on_convert_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+    if isinstance(error, app_commands.CommandOnCooldown):
+        await interaction.response.send_message(str(error), ephemeral=True)
 
 
 client.run(TOKEN)
