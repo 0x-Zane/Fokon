@@ -544,7 +544,30 @@ async def resistance_color(interaction: discord.Interaction,number_of_lines:int,
 @client.tree.command(name="whois")
 @app_commands.describe(website= "Enter url of the website to analyse, ex: example.com")
 async def whois_command(interaction: discord.Interaction, website:str):
-    await interaction.response.send_message(whois.whois(website))
+    await interaction.response.send_message((whois.whois(website)).text)
+
+@client.tree.command(name ="convert")
+@app_commands.describe(value_to_convert="Enter the value that you want to convert here",initial_base="Initial base",target_base="Target base")
+@app_commands.choices(
+    initial_base=[ 
+        app_commands.Choice( name ="binary/base2", value = 2 ),
+        app_commands.Choice( name ="Octal/base8", value = 8 ),
+        app_commands.Choice( name = "Decimal/base10", value = 10),
+        app_commands.Choice( name = "Hexadecimal/base16", value = 16)],
+
+
+    target_base=[
+        app_commands.Choice( name ="binary/base2", value = 2 ),
+        app_commands.Choice( name ="Octal/base8", value = 8 ),
+        app_commands.Choice( name = "Decimal/base10", value = 10),
+        app_commands.Choice( name = "Hexadecimal/base16", value = 16)],
+)
+
+                    
+                                    
+async def convert(interaction:discord.Interaction,value_to_convert:str, initial_base:int, target_base:int):
+    await interaction.response.send_message(f"Now converting {value_to_convert} from {initial_base} to {target_base}")
+
 
 client.run(TOKEN)
 
