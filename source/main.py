@@ -607,6 +607,7 @@ async def on_whois_error(interaction: discord.Interaction, error: app_commands.A
 
 
 @client.tree.command(name ="convert")
+@app_commands.checks.cooldown(1, 4.0, key=lambda i: (i.guild_id, i.user.id))
 @app_commands.describe(value_to_convert="Enter the value that you want to convert here",initial_base="Initial base",target_base="Target base")
 @app_commands.choices(
     initial_base=[ 
@@ -654,7 +655,6 @@ async def convert(interaction: discord.Interaction, value_to_convert: str, initi
         )
     except Exception as e:
         await interaction.response.send_message(f"Error  : {e}", ephemeral=True)
-@app_commands.checks.cooldown(1, 10.0, key=lambda i: (i.guild_id, i.user.id))
 @convert.error
 async def on_convert_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CommandOnCooldown):
