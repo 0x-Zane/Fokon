@@ -558,15 +558,45 @@ async def whois_command(interaction: discord.Interaction, website:str):
 
     target_base=[
         app_commands.Choice( name ="binary/base2", value = 2 ),
-        app_commands.Choice( name ="Octal/base8", value = 8 ),
+        app_commands.Choice( name ="Octal/base8", value = 8 ),        
         app_commands.Choice( name = "Decimal/base10", value = 10),
         app_commands.Choice( name = "Hexadecimal/base16", value = 16)],
 )
 
                     
-                                    
-async def convert(interaction:discord.Interaction,value_to_convert:str, initial_base:int, target_base:int):
-    await interaction.response.send_message(f"Now converting {value_to_convert} from {initial_base} to {target_base}")
+async def convert(interaction: discord.Interaction, value_to_convert: str, initial_base: int, target_base: int):
+    try:
+        # 1. Conversion de la chaîne d'entrée vers un entier (Base 10)
+        # Python gère nativement le passage de n'importe quelle base vers le decimal avec int()
+        decimal_value = int(value_to_convert, initial_base)
+
+        # 2. Conversion du décimal vers la base cible
+        if target_base == 10:
+            result = str(decimal_value)
+        elif target_base == 2:
+            result = bin(decimal_value)[2:]  # [2:] enlève le préfixe '0b'
+        elif target_base == 8:
+            result = oct(decimal_value)[2:]  # [2:] enlève le préfixe '0o'
+        elif target_base == 16:
+            result = hex(decimal_value)[2:].upper()  # [2:] enlève '0x' et met en majuscules
+            
+        embed = discord.Embed(title="BASE CONVERSION" )
+        embed.add_field(name="Initial base", value=initial_base)
+        embed.add_field(name="Target base", value=target_base)
+        embed.add_field(name="Result",value=f"{value_to_convert} (base {initial_base}) → {result} (base {target_base})")
+        await interaction.response.send_message(embed=embed)
+
+
+    except ValueError:
+        # Si l'utilisateur entre "12" alors qu'il a choisi "Binaire"
+        await interaction.response.send_message(
+            f"Error : `{value_to_convert}` is not a valid number {initial_base}.", 
+            ephemeral=True
+        )
+    except Exception as e:
+        await interaction.response.send_message(f"Error  : {e}", ephemeral=True)
+
+
 
 
 client.run(TOKEN)
