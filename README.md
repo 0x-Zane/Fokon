@@ -168,7 +168,6 @@ Improving documentation, whether in the README or in code comments, is always ap
 
 - [ ] `/ocr {image}` - Extract text from an image
 
-- [ ] `/whois {website}` - Retrieve information about a domain
 
 ### Implemented Commands
 
@@ -181,6 +180,7 @@ Improving documentation, whether in the README or in code comments, is always ap
 - [x] `/resistance_color` - Resistor color code decoding
 - [x] `/periodic` - Periodic table lookup
 - [x] `/base_convert {number} {from} {to}` - Convert a number from one base to another
+- [x] `/whois {website}` - Retrieve information about a domain
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
