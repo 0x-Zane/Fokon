@@ -42,11 +42,14 @@ client = commands.Bot(command_prefix= "/",intents=bot_intents)
 @client.event 
 async def  on_ready():
     print(f"The bot is now ready for use as {client.user} ")
+    
     try:
         synced = await client.tree.sync() #Synchronize slash commands from the bot with discord
         print(f"Successfully synced {len(synced)} commands.")
+        await client.change_presence(activity=discord.Streaming(name='github.com/0Zane/Fokon', url='https://github.com/0Zane/Fokon'),status=discord.Status.idle)
     except Exception as e:
         print(e)
+    
 
 @client.tree.command(name="info")
 async def info(interaction : discord.Interaction):
