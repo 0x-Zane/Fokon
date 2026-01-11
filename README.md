@@ -159,10 +159,11 @@ Improving documentation, whether in the README or in code comments, is always ap
 
 ### General Improvements
 
-- [ ] Add cooldowns to all commands (currently only on `/github`)
+- [x] Add cooldowns to all commands (currently only on `/github`)
 - [ ] Improve error handling
 - [ ] Optimize searches in JSON data
 - [ ] Refactor duplicated code
+- [ ] Add ASCII conversion with ``/convert``
 
 ### Commands to Implement
 
